@@ -47,13 +47,13 @@ int[] SelectSort(int[] array)
     int saved;
     while (size != 1)
     {
-        int indmax = 0;
+        int indMax = 0;
         for (int i = 1; i < size; i++)
         {
-            if (array[i] > array[indmax]) indmax = i;
+            if (array[i] > array[indMax]) indMax = i;
         }
-        saved = array[indmax];
-        array[indmax] = array[size - 1];
+        saved = array[indMax];
+        array[indMax] = array[size - 1];
         array[size - 1] = saved;
         size--;
     }
