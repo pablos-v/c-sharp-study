@@ -8,7 +8,7 @@
 //     }
 //     Console.WriteLine(" ");
 // }
-
+// --------------------------
 // Дан текст. В тексте нужно заменить все пробелы на | , маленькие п заменить на П , 
 // большие К заменить на маленькие к.
 
@@ -27,7 +27,42 @@
 // Console.WriteLine(replace(textt, ' ', '|'));
 // Console.WriteLine(replace(textt, 'п', 'П'));
 // Console.WriteLine(replace(textt, 'К', 'к'));
+// ---------------------------------
+// Сортировка выбором по моему алгоритму от макс к мин, с конца к началу
 
-// Сортировка выбором
+int[] arr = { 10, 5, 6, 4, 3, 2, 9, 1, 1, 4, 4, 7, 8 };
 
+void printArr(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
+
+int[] SelectSort(int[] array)
+{
+    
+    int size = array.Length;
+    int saved;
+    while (size !=1)
+    {
+        int indmax = 0;
+        for (int i = 1; i < size; i++)
+        {
+            if (array[i] > array[indmax]) indmax = i;
+        }
+        saved = array[indmax];
+        array[indmax] = array[size - 1];
+        array[size - 1] = saved;
+        size--;
+    }
+    return array;
+}
+
+printArr(arr);
+printArr(SelectSort(arr));
+
+// Сортировка выбором вариант Срегея
 
