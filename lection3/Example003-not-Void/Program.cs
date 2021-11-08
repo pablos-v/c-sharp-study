@@ -26,6 +26,16 @@
 // }
 // Console.Write(Sqrt(Enter()));
 
+// bool Sqrt(int[] num)
+// {
+//     return num[0] == num[1] * num[1];
+// }
+
+// int[] num = {64, 8};
+
+// if (Sqrt(num)) Console.WriteLine($"Число {num[0]} является квадратом числа {num[1]}");
+// else Console.WriteLine($"Число {num[0]} не является квадратом числа {num[1]}");
+
 //  2. Даны два числа. Показать большее и меньшее число
 
 // string Max(int a, int b)
