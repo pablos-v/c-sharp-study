@@ -123,4 +123,35 @@
 
 // 22. Найти расстояние между точками в пространстве 2D/3D
 
+// 2D методами с вводом
+
+// double[] Enter()
+// {
+//     double[] x1y1x2y2= new double[4];
+//     Console.WriteLine("X-координата первой точки: ");
+//     x1y1x2y2[0] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Y-координата первой точки: ");
+//     x1y1x2y2[1] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("X-координата второй точки: ");
+//     x1y1x2y2[2] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Y-координата второй точки: ");
+//     x1y1x2y2[3] = double.Parse(Console.ReadLine());
+//     return x1y1x2y2;
+// }
+
+// double Pifagor()
+// {
+// double[] x1y1x2y2= Enter();
+// double a = Math.Abs(x1y1x2y2[0] - x1y1x2y2[2]);
+// double b = Math.Abs(x1y1x2y2[1] - x1y1x2y2[3]);
+// double result = Math.Sqrt(a * a + b * b);
+// return result;
+// }
+
+// Console.WriteLine("Расстояние между точками составляет " + Pifagor());
+
+// 3D
+
+
+
 
