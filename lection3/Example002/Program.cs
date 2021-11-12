@@ -89,13 +89,35 @@
 
 // 14. Найти третью цифру числа или сообщить, что её нет
 
+// первое решение с наскока
 // Console.WriteLine("Введите число: ");
 // string num = Console.ReadLine();
 // if (num.Length > 2) Console.Write(num[2]);
 // else Console.Write("В заданном числе нет третьей цифры!");
 
-int num = 785;
+// // математическое решение
+// int F27(int N)   // сколько цифр в числе
+// {
+//     int x = 1;
+//     while (N > 10)
+//     {
+//         N /= 10;
+//         x++;
+//     }
+//     return x;
+// }
 
-if (num / 100 == 0) Console.Write("В заданном числе нет третьей цифры!");
-else Console.Write(num % 10);
+// int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
+// {
+//     int del = 10;
+//     for (int i = 1; i < X - 3; i++)
+//     {
+//         del *= 10;
+//     }
+//     return del;
+// }
 
+// int number = 87;
+// int to3 = number / Del(F27(number));
+// if (to3 < 100) Console.Write("В заданном числе нет третьей цифры!");
+// else Console.Write(to3 % 10);
