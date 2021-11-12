@@ -95,29 +95,33 @@
 // if (num.Length > 2) Console.Write(num[2]);
 // else Console.Write("В заданном числе нет третьей цифры!");
 
-// // математическое решение
-// int F27(int N)   // сколько цифр в числе
-// {
-//     int x = 1;
-//     while (N > 10)
-//     {
-//         N /= 10;
-//         x++;
-//     }
-//     return x;
-// }
+// математическое решение
+int F27(int N)   // сколько цифр в числе
+{
+    int x = 1;
+    while (N > 10)
+    {
+        N /= 10;
+        x++;
+    }
+    return x;
+}
 
-// int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
-// {
-//     int del = 10;
-//     for (int i = 1; i < X - 3; i++)
-//     {
-//         del *= 10;
-//     }
-//     return del;
-// }
+int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
+{
+    int del = 10;
+    for (int i = 1; i < X - 3; i++)
+    {
+        del *= 10;
+    }
+    return del;
+}
 
-// int number = 87;
-// int to3 = number / Del(F27(number));
-// if (to3 < 100) Console.Write("В заданном числе нет третьей цифры!");
-// else Console.Write(to3 % 10);
+void Counter(int number)
+{
+if (number < 100) Console.Write("В заданном числе нет третьей цифры!");
+else if (number < 1000) Console.Write(number % 10);
+else Console.Write((number / Del(F27(number))) % 10);
+}
+
+Counter(987654);
