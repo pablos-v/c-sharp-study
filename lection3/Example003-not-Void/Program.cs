@@ -109,3 +109,10 @@
 // }
 // Console.WriteLine(Num(658));
 
+// лучше так:
+
+// int number(int a)
+// {
+//     return a / 100 * 10 + a % 10;
+// }
+// Console.WriteLine($"Получаем двузначное число {number(135)}");
