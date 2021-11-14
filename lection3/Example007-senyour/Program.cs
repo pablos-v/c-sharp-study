@@ -118,10 +118,84 @@
 
 // 35. Определить, присутствует ли в заданном массиве, некоторое число 
 
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i]= new Random().Next(-9,10);
+//     }
+//     return arr;
+// }
 
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i]+" ");
+//     }
+//     Console.WriteLine(" ");
+// }
 
-// 36. Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных\четных чисел
+// bool Search(int[] arr, int N)
+// {
+//     bool x=false;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i]==N) x=true;        
+//     }
+//     return x;
+// }
+
+// int[] array=RandArr(new Random().Next(10,15));
+// Console.Write("Какое число ищем: ");
+// int a = int.Parse(Console.ReadLine());
+// PrintArr(array);
+// if (Search(array, a)) Console.Write("Есть такое.");
+// else Console.Write("Пусто.");
+
+// 36. Задать массив, заполнить случайными положительными трёхзначными числами. 
+// Показать количество нечетных\четных чисел
+
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i] = new Random().Next(100, 1000);
+//     }
+//     return arr;
+// }
+
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     }
+//     Console.WriteLine(" ");
+// }
+
+// (int, int) Count(int[] arr)
+// {
+//     int a = 0;
+//     int b = 0;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i]%2==0) a++;
+//         else b++;
+//     }
+//     return (a, b);
+// }
+
+// int[] array = RandArr(new Random().Next(10, 15));
+// PrintArr(array);
+// Console.Write("В данном массиве чётных и нечётных чисел соответственно: " + Count(array));
+
 // 37. В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
+
+
+
 // 38. Найти сумму чисел одномерного массива стоящих на нечетной позиции
 // 39. Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 // 40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
