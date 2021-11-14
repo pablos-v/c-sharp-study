@@ -194,8 +194,79 @@
 
 // 37. В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
 
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i] = new Random().Next(0, 200);
+//     }
+//     return arr;
+// }
 
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     }
+//     Console.WriteLine(" ");
+// }
+
+// int Count(int[] arr)
+// {
+//     int x = 0;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i] > 9 && arr[i] < 100) x++;
+//     }
+//     return x;
+// }
+
+// int[] array = RandArr(123);
+// PrintArr(array);
+// Console.Write($"количество элементов из отрезка [10,99]: {Count(array)}");
 
 // 38. Найти сумму чисел одномерного массива стоящих на нечетной позиции
-// 39. Найти произведение пар чисел в одномерном массиве. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i] = new Random().Next(0, 200);
+//     }
+//     return arr;
+// }
+
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     }
+//     Console.WriteLine(" ");
+// }
+
+// int Count(int[] arr)
+// {
+//     int x = 0;
+//     int i = 0;
+//     while (i < arr.Length)
+//     {
+//         x += arr[i];
+//         i = i + 2;
+//     }
+//     return x;
+// }
+
+// int[] array = RandArr(7);
+// PrintArr(array);
+// Console.Write($"Сумма чисел, стоящих на нечётной ПОЗИЦИИ: {Count(array)}");
+
+// 39. Найти произведение пар чисел в одномерном массиве. 
+// Парой считаем первый и последний элемент, второй и предпоследний и т.д.
+
+
+
 // 40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
