@@ -48,42 +48,78 @@
 // Найти сумму положительных/отрицательных элементов массива
 
 
-int[] RandArr(int a)
-{
-    int[] arr = new int[a];
-    for (int i = 0; i < a; i++)
-    {
-        arr[i]= new Random().Next(-9,10);
-    }
-    return arr;
-}
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i]= new Random().Next(-9,10);
+//     }
+//     return arr;
+// }
 
-void PrintArr(int[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        Console.Write(arr[i]+" ");
-    }
-}
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i]+" ");
+//     }
+// }
 
-(int, int) Sum(int[] arr)
-{
-    int sump=0;
-    int summ=0;
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (arr[i]>0) sump+=arr[i];
-        else summ+=arr[i];
-    }
-    return (sump, summ);
-}
+// (int, int) Sum(int[] arr)
+// {
+//     int sump=0;
+//     int summ=0;
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i]>0) sump+=arr[i];
+//         else summ+=arr[i];
+//     }
+//     return (sump, summ);
+// }
 
-int[] array=RandArr(12);
-PrintArr(array);
-Console.WriteLine($"Сумма положительных и отрицательных чисел массива соответственно: {Sum(array)}");
+// int[] array=RandArr(12);
+// PrintArr(array);
+// Console.WriteLine($"Сумма положительных и отрицательных чисел массива соответственно: {Sum(array)}");
 
-// 34. Написать программу замену элементов массива на противоположные
+// 34. Написать программу замену элементов массива на противоположные (по знаку?)
+
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i]= new Random().Next(-9,10);
+//     }
+//     return arr;
+// }
+
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i]+" ");
+//     }
+//     Console.WriteLine(" ");
+// }
+
+// int[] RevArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arr[i]=arr[i]*-1;
+//     }
+//     return arr;
+// }
+
+// int[] array=RandArr(12);
+// PrintArr(array);
+// PrintArr(RevArr(array));
+
 // 35. Определить, присутствует ли в заданном массиве, некоторое число 
+
+
+
 // 36. Задать массив, заполнить случайными положительными трёхзначными числами. Показать количество нечетных\четных чисел
 // 37. В одномерном массиве из 123 чисел найти количество элементов из отрезка [10,99]
 // 38. Найти сумму чисел одномерного массива стоящих на нечетной позиции
