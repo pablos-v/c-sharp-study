@@ -1,16 +1,26 @@
-﻿// вывести квадрат числа
+﻿// 0 вывести квадрат числа
 
-// Console.Write("Введите число: ");
-// string x = Console.ReadLine();
-// int X = int.Parse(x);
-
-// void Squad(int X)
+// int Squad(int X)
 // {
-//     Console.Write(X*X);
+//     return X*X;
 // }
 
-// Squad(X);
-// ---------------------------------------
+// Console.Write(Squad(10));
+
+// 1. По двум введённым числам проверять является ли первое квадратом второго
+
+// Console.WriteLine("Введите первое число ");
+// int a = int.Parse(Console.ReadLine());
+// Console.WriteLine("Введите второе число ");
+// int b = int.Parse(Console.ReadLine());
+
+// bool Sqrt(int a, int b)
+// {
+//     return (a==b*b);
+// }
+
+// if (Sqrt(a, b)) Console.Write("Квадрат");
+// else Console.Write("Не квадрат");
 
 //По введенному номеру дня недели вывести его название
 
@@ -96,32 +106,32 @@
 // else Console.Write("В заданном числе нет третьей цифры!");
 
 // математическое решение
-int F27(int N)   // сколько цифр в числе
-{
-    int x = 1;
-    while (N > 10)
-    {
-        N /= 10;
-        x++;
-    }
-    return x;
-}
+// int F27(int N)   // сколько цифр в числе
+// {
+//     int x = 1;
+//     while (N > 10)
+//     {
+//         N /= 10;
+//         x++;
+//     }
+//     return x;
+// }
 
-int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
-{
-    int del = 10;
-    for (int i = 1; i < X - 3; i++)
-    {
-        del *= 10;
-    }
-    return del;
-}
+// int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
+// {
+//     int del = 10;
+//     for (int i = 1; i < X - 3; i++)
+//     {
+//         del *= 10;
+//     }
+//     return del;
+// }
 
-void Counter(int number)
-{
-if (number < 100) Console.Write("В заданном числе нет третьей цифры!");
-else if (number < 1000) Console.Write(number % 10);
-else Console.Write((number / Del(F27(number))) % 10);
-}
+// void Counter(int number)
+// {
+// if (number < 100) Console.Write("В заданном числе нет третьей цифры!");
+// else if (number < 1000) Console.Write(number % 10);
+// else Console.Write((number / Del(F27(number))) % 10);
+// }
 
-Counter(987654);
+// Counter(987654);

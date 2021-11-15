@@ -54,16 +54,17 @@
 // }
 // F23(10);
 
-// int[] F23(int n)
-// {
-//     int[] arr = new int[n];
-//     for (int i = 1; i <= arr.Length; i++)
-//     {
-//         arr[i-1] = i*i;
-//     }
-//     return arr;
-// }
-// Console.WriteLine(string.Join(", ", F23(5)));
+// вариант 2
+int[] F23(int n)
+{
+    int[] arr = new int[n];
+    for (int i = 1; i <= arr.Length; i++)
+    {
+        arr[i-1] = i*i;
+    }
+    return arr;
+}
+Console.WriteLine(string.Join(", ", F23(5)));
 
 // 24. Найти кубы чисел от 1 до N
 
@@ -100,16 +101,24 @@
 // }
 // F23(10);
 
-// int F23(int A)
+// double F23(double A)
 // {
-//     int arr = 0;
-//     for (int i = 1; i <= A; i++)
+//     double arr = 0;
+//     for (double i = 1; i <= A; i++)
 //     {
 //         arr += i;
 //     }
 //     return arr;
 // }
-// Console.WriteLine(F23(10));
+
+// быстрый вариант Сергея
+// int F23(int A)
+// {
+//     return (A*(A+1))/2; 
+// }
+// DateTime dt = DateTime.Now;
+// Console.WriteLine(F23(10000000));
+// Console.WriteLine((DateTime.Now - dt).TotalMilliseconds);
 
 // 26. Возведите число А в натуральную степень B используя цикл
 

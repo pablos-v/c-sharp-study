@@ -1,49 +1,58 @@
-﻿// 0. Вывести квадрат числа
+﻿// 0 вывести квадрат числа
 
-// int f(int x)
+// int Squad(int X)
 // {
-//     return x*x;
+//     return X*X;
 // }
-// Console.WriteLine(f(10));
+
+// Console.Write(Squad(10));
 
 // 1. По двум введённым числам проверять является ли первое квадратом второго
 
-// int[] Enter()
-// {
-//     int[] num = new int[2];
-//     Console.WriteLine("Введите первое число ");
-//     string A = Console.ReadLine();
-//     num[0] = int.Parse(A);
-//     Console.WriteLine("Введите второе число ");
-//     string B = Console.ReadLine();
-//     num[1] = int.Parse(B);
-//     return num;
-// }
-// string Sqrt(int[] num)
-// {
-//     if (num[0] == num[1] * num[1]) return ($"Число {num[0]} является квадратом числа {num[1]}");
-//     else return ($"Число {num[0]} не является квадратом числа {num[1]}");
-// }
-// Console.Write(Sqrt(Enter()));
+// Console.WriteLine("Введите первое число ");
+// int a = int.Parse(Console.ReadLine());
+// Console.WriteLine("Введите второе число ");
+// int b = int.Parse(Console.ReadLine());
 
-// bool Sqrt(int[] num)
+// bool Sqrt(int a, int b)
 // {
-//     return num[0] == num[1] * num[1];
+//     return (a==b*b);
 // }
 
-// int[] num = {64, 8};
-
-// if (Sqrt(num)) Console.WriteLine($"Число {num[0]} является квадратом числа {num[1]}");
-// else Console.WriteLine($"Число {num[0]} не является квадратом числа {num[1]}");
+// if (Sqrt(a, b)) Console.Write("Квадрат");
+// else Console.Write("Не квадрат");
 
 //  2. Даны два числа. Показать большее и меньшее число
 
 // string Max(int a, int b)
 // {
-//     if (a>b) return ($"Max = {a}, min = {b}");
+//     if (a > b) return ($"Max = {a}, min = {b}");
 //     else return ($"Max = {b}, min = {a}");
 // }
 // Console.WriteLine(Max(5, 7));
+
+// вариант 2
+
+// bool F2(int a, int b)
+// {
+//     return a > b;
+// }
+
+// int a = 15;
+// int b = 10;
+// if (F2(a, b)) Console.Write($"Число {a} больше числа {b}.");
+// else Console.Write($"Число {b} больше числа {a}.");
+
+// вариант 3
+// (int, int) F2_2(int a, int b)
+// {
+//     if (a > b) return (a, b);
+//     else return (b, a);
+// }
+
+// int a = 15;
+// int b = 10;
+// Console.Write($"Максимальное и минимальное число соответственно: {F2_2(a, b)}.");
 
 //  3. По введенному номеру дня недели вывести его название
 
@@ -67,23 +76,52 @@
 
 //  5. Написать программу вычисления значения функции y=f(a)
 
+// double Sin(double degrees)
+// {
+//     double angle = Math.PI * degrees / 180.0;
+//     return Math.Sin(angle);
+// }
+// double a = 1;
+// Console.WriteLine($"синус {a} = {Sin(a)}");
+
 //  6. Выяснить является ли число чётным
 
-// string Even(int a)
+// bool Even(int a)
 // {
-//    if(a == 0) return ("Введите число, отличное от нуля");
-//    else if(a % 2 == 0) return ("Это чётное число");
-//    else return ("Это нечётное число");
+//     return (a % 2 == 0);
 // }
-// Console.WriteLine(Even(16));
+// if (Even(0)) Console.WriteLine("Чёт");
+// else Console.Write("Нечет");
 
 //  7. Показать числа от -N до N
 
-// не решил
+// int[] CreateArray(int arg)
+// {
+//     int[] arrayA = new int[arg * 2 + 1];
+//     for (int i = -arg; i <= arg; i++)
+//     {
+//         arrayA[i + arg] = i;
+//     }
+//     return arrayA;
+// }
+
+// int[] arr = CreateArray(10);
+// Console.WriteLine(String.Join(',', arr));
 
 //  8. Показать четные числа от 1 до N
 
-// не решил
+// int[] CreateArray(int arg)
+// {
+//     int[] arrayA = new int[arg];
+//     for (int i = 1; i <= arg; i++)
+//     {
+//         arrayA[i-1] = i;
+//     }
+//     return arrayA;
+// }
+
+// int[] arr = CreateArray(7);
+// Console.WriteLine(String.Join(',', arr));
 
 //  9. Показать последнюю цифру трёхзначного числа
 
@@ -116,3 +154,75 @@
 //     return a / 100 * 10 + a % 10;
 // }
 // Console.WriteLine($"Получаем двузначное число {number(135)}");
+
+// 13. Выяснить, кратно ли число заданному, если нет, вывести остаток.
+
+// int[] Input()
+// {
+//     int[] numbers = new int[2];
+//     Console.Write("Введите делимое: ");
+//     string a = Console.ReadLine();
+//     numbers[0] = int.Parse(a);
+//     Console.Write("Введите делитель: ");
+//     string b = Console.ReadLine();
+//     numbers[1] = int.Parse(b);
+//     return numbers;
+// }
+// void Check(int[] numbers)
+// {
+//     if (numbers[0] % numbers[1] == 0) Console.Write("Делимое кратно делителю!");
+//     else Console.Write($"Нацело не делится, остаток от деления {numbers[0] % numbers[1]}");
+// }
+
+// Check(Input());
+
+// вариант 2
+// bool Krat(int a, int b)
+// {
+//     return a % b == 0;
+// }
+// int a = 20;
+// int b = 11;
+
+// if (Krat(a, b)) Console.Write("Делимое кратно делителю!");
+// else Console.Write($"Нацело не делится, остаток от деления {a % b}");
+// ------------------------
+
+// 14. Найти третью цифру числа или сообщить, что её нет
+
+// первое решение с наскока
+// Console.WriteLine("Введите число: ");
+// string num = Console.ReadLine();
+// if (num.Length > 2) Console.Write(num[2]);
+// else Console.Write("В заданном числе нет третьей цифры!");
+
+// математическое решение
+// int F27(int N)   // сколько цифр в числе
+// {
+//     int x = 1;
+//     while (N > 10)
+//     {
+//         N /= 10;
+//         x++;
+//     }
+//     return x;
+// }
+
+// int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
+// {
+//     int del = 10;
+//     for (int i = 1; i < X - 3; i++)
+//     {
+//         del *= 10;
+//     }
+//     return del;
+// }
+
+// void Counter(int number)
+// {
+// if (number < 100) Console.Write("В заданном числе нет третьей цифры!");
+// else if (number < 1000) Console.Write(number % 10);
+// else Console.Write((number / Del(F27(number))) % 10);
+// }
+
+// Counter(987654);
