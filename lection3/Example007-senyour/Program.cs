@@ -267,37 +267,40 @@
 // 39. Найти произведение пар чисел в одномерном массиве. 
 // Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 
-int[] RandArr(int a)
-{
-    int[] arr = new int[a];
-    for (int i = 0; i < a; i++)
-    {
-        arr[i] = new Random().Next(-9, 10);
-    }
-    return arr;
-}
+// int[] RandArr(int a)
+// {
+//     int[] arr = new int[a];
+//     for (int i = 0; i < a; i++)
+//     {
+//         arr[i] = new Random().Next(-9, 10);
+//     }
+//     return arr;
+// }
 
-void PrintArr(int[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-    {
-        Console.Write(arr[i] + " ");
-    }
-    Console.WriteLine(" ");
-}
+// void PrintArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         Console.Write(arr[i] + " ");
+//     }
+//     Console.WriteLine(" ");
+// }
 
-int[] array = RandArr(11);
+// int[] Count (int[] array)
+// {
+// int last = array.Length - 1;
+// int[] barray = new int[array.Length / 2];
+// for (int i = 0; i < (array.Length / 2); i++)
+// {
+//     barray[i]=array[i]*array[last];
+//     last--;
+// }
+// return barray;
+// }
 
-PrintArr(array);
-
-int last = array.Length - 1;
-int[] barray = new int[array.Length / 2];
-for (int i = 0; i < (array.Length / 2); i++)
-{
-    barray[i]=array[i]*array[last];
-    last--;
-}
-
-PrintArr(barray);
+// int[] array = RandArr(11);
+// PrintArr(array);
+// PrintArr(Count(array));
 
 // 40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
+

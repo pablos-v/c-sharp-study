@@ -55,16 +55,16 @@
 // F23(10);
 
 // вариант 2
-int[] F23(int n)
-{
-    int[] arr = new int[n];
-    for (int i = 1; i <= arr.Length; i++)
-    {
-        arr[i-1] = i*i;
-    }
-    return arr;
-}
-Console.WriteLine(string.Join(", ", F23(5)));
+// int[] F23(int n)
+// {
+//     int[] arr = new int[n];
+//     for (int i = 1; i <= arr.Length; i++)
+//     {
+//         arr[i-1] = i*i;
+//     }
+//     return arr;
+// }
+// Console.WriteLine(String.Join(", ", F23(5)));
 
 // 24. Найти кубы чисел от 1 до N
 
@@ -101,16 +101,6 @@ Console.WriteLine(string.Join(", ", F23(5)));
 // }
 // F23(10);
 
-// double F23(double A)
-// {
-//     double arr = 0;
-//     for (double i = 1; i <= A; i++)
-//     {
-//         arr += i;
-//     }
-//     return arr;
-// }
-
 // быстрый вариант Сергея
 // int F23(int A)
 // {
@@ -135,12 +125,13 @@ Console.WriteLine(string.Join(", ", F23(5)));
 
 // 27. Определить количество цифр в числе
 
-// void F27(int N)
+// int F27(int N)
 // {
-//     Console.Write((N.ToString().ToCharArray()).Length);
+//     return (N.ToString().ToCharArray()).Length;
 // }
-// F27(1234567);
+// Console.Write(F27(1234567));
 
+// математический метод
 // int F27(int N)
 // {
 //     int x = 1;
@@ -220,3 +211,24 @@ Console.WriteLine(string.Join(", ", F23(5)));
 // }
 // F23(10, 20);
 
+// через массивы
+// int[] F23(int N, int F)
+// {
+//     int m = 0;
+//     for (int i = N; i <= F; i++)
+//     {
+//         if (i % 2 == 0) m++;
+//     }
+//     int[] num = new int[m];
+//     m = 0;
+//     for (int i = N; i <= F; i++)
+//     {
+//         if (i % 2 == 0)
+//         {
+//             num[m] = i * i * i;
+//             m++;
+//         }
+//     }
+//     return num;
+// }
+// Console.WriteLine(string.Join(", ", F23(10, 20)));

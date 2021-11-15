@@ -54,6 +54,13 @@
 // int b = 10;
 // Console.Write($"Максимальное и минимальное число соответственно: {F2_2(a, b)}.");
 
+// !!!!!!!!!!! вариант 4 с сокращённой записью методов !!!!!!!!!
+(int, int) F2_2(int a, int b) => a > b ? (a, b) : (b, a);
+
+int a = 15;
+int b = 10;
+Console.Write($"Максимальное и минимальное число соответственно: {F2_2(a, b)}.");
+
 //  3. По введенному номеру дня недели вывести его название
 
 // string WeekDay(int current)
@@ -106,7 +113,7 @@
 // }
 
 // int[] arr = CreateArray(10);
-// Console.WriteLine(String.Join(',', arr));
+// Console.WriteLine(String.Join(", ", arr));
 
 //  8. Показать четные числа от 1 до N
 

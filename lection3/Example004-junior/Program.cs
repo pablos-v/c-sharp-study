@@ -7,6 +7,7 @@
 // }
 // Krat(161, 7, 23);
 
+// вариант 2
 // bool Kratno(int a, int b, int c)
 // {
 //     return (a % b % c == 0);
@@ -30,8 +31,8 @@
 // {
 //     return (Math.Sqrt(a) == b);
 // }
-//     if (IfQuad(100, 10)) Console.WriteLine ("Является квадратом");
-//     else Console.WriteLine ("Не является квадратом");
+// if (IfQuad(100, 10)) Console.WriteLine ("Является квадратом");
+// else Console.WriteLine ("Не является квадратом");
 
 // Вариант "интересный"
 
