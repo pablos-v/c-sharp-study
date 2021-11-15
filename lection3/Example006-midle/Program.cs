@@ -215,20 +215,16 @@
 // int[] F23(int N, int F)
 // {
 //     int m = 0;
-//     for (int i = N; i <= F; i++)
-//     {
-//         if (i % 2 == 0) m++;
-//     }
-//     int[] num = new int[m];
-//     m = 0;
+//     int[] num = new int[((F - N) / 2) + 1];
 //     for (int i = N; i <= F; i++)
 //     {
 //         if (i % 2 == 0)
 //         {
-//             num[m] = i * i * i;
-//             m++;
+//             num[m++] = i * i * i;
 //         }
 //     }
 //     return num;
 // }
 // Console.WriteLine(string.Join(", ", F23(10, 20)));
+
+

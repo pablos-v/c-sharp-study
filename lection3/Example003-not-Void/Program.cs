@@ -55,11 +55,7 @@
 // Console.Write($"Максимальное и минимальное число соответственно: {F2_2(a, b)}.");
 
 // !!!!!!!!!!! вариант 4 с сокращённой записью методов !!!!!!!!!
-(int, int) F2_2(int a, int b) => a > b ? (a, b) : (b, a);
-
-int a = 15;
-int b = 10;
-Console.Write($"Максимальное и минимальное число соответственно: {F2_2(a, b)}.");
+// N
 
 //  3. По введенному номеру дня недели вывести его название
 
@@ -102,17 +98,17 @@ Console.Write($"Максимальное и минимальное число с
 
 //  7. Показать числа от -N до N
 
-// int[] CreateArray(int arg)
+// int[] CreateArray(int N)
 // {
-//     int[] arrayA = new int[arg * 2 + 1];
-//     for (int i = -arg; i <= arg; i++)
+//     int[] arrayA = new int[N * 2 + 1];
+//     for (int i = -N; i <= N; i++)
 //     {
-//         arrayA[i + arg] = i;
+//         arrayA[i + N] = i;
 //     }
 //     return arrayA;
 // }
 
-// int[] arr = CreateArray(10);
+// int[] arr = CreateArray(5);
 // Console.WriteLine(String.Join(", ", arr));
 
 //  8. Показать четные числа от 1 до N
@@ -145,6 +141,41 @@ Console.Write($"Максимальное и минимальное число с
 //     return (num / 10) % 10;
 // }
 // Console.WriteLine(secondNum(125));
+
+// 11. Дано число из отрезка [10, 99]. Показать наибольшую цифру числа
+// void maxNumber (int number)
+// {
+//     int numberOne = number / 10;
+//     int numberTwo = number % 10;
+
+//     if (numberOne>numberTwo)
+//     {
+//         Console.WriteLine($"В числе {number} наибольшая цифра {numberOne}");
+//     }
+//     else
+//     {
+//         Console.WriteLine($"В числе {number} наибольшая цифра {numberTwo}");
+//     }
+// }
+// maxNumber(new Random().Next(10, 100));
+//  2 вариант через массив char
+// char maxNumber (char[] number)
+// {
+//     if (number[0]>number[1]) return number[0];
+//     else return number[1];
+// }
+// int i = new Random().Next(10, 100);
+// char[] arr = i.ToString().ToCharArray();
+// Console.WriteLine($"В числе {i} наибольшая цифра {maxNumber(arr)}");
+// 3 вариант лучший
+// int F11(int i)
+// {
+//     if (i / 10 > i % 10) return i / 10;
+//     else return i % 10;
+// }
+// int i = new Random().Next(10, 100);
+// Console.WriteLine(i);
+// Console.Write(F11(i));
 
 // 12. Удалить вторую цифру трёхзначного числа
 
@@ -203,8 +234,8 @@ Console.Write($"Максимальное и минимальное число с
 // if (num.Length > 2) Console.Write(num[2]);
 // else Console.Write("В заданном числе нет третьей цифры!");
 
-// математическое решение
-// int F27(int N)   // сколько цифр в числе
+//математическое решение
+// int F27(int N)   // сколько цифр в числе вариант 1
 // {
 //     int x = 1;
 //     while (N > 10)
@@ -213,6 +244,11 @@ Console.Write($"Максимальное и минимальное число с
 //         x++;
 //     }
 //     return x;
+// }
+
+// int F27(int N)   // сколько цифр в числе вариант 2
+// {
+//     return N.ToString().Length;
 // }
 
 // int Del(int X)      // готовит делитель, отсекающий число до трёхзначного
@@ -233,3 +269,16 @@ Console.Write($"Максимальное и минимальное число с
 // }
 
 // Counter(987654);
+
+// // код Володи
+// int FindThirdNum(int arg) 
+// { 
+//     if(arg / 100 == 0) return -1; 
+//     else  
+//     { 
+//         while(arg / 100 > 9) arg = arg / 10; 
+//         return arg % 10; 
+//     } 
+// }
+
+// Console.Write(FindThirdNum(123456));

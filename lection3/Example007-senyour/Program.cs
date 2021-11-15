@@ -23,7 +23,6 @@
 
 // 32. Задать массив из 8 элементов, заполненных нулями и единицами вывести их на экран 
 
-
 // int[] RandArr(int a)
 // {
 //     int[] arr = new int[a];
@@ -121,10 +120,7 @@
 // int[] RandArr(int a)
 // {
 //     int[] arr = new int[a];
-//     for (int i = 0; i < a; i++)
-//     {
-//         arr[i]= new Random().Next(-9,10);
-//     }
+//     for (int i = 0; i < a; i++) arr[i] = new Random().Next(-9, 10);
 //     return arr;
 // }
 
@@ -132,22 +128,26 @@
 // {
 //     for (int i = 0; i < arr.Length; i++)
 //     {
-//         Console.Write(arr[i]+" ");
+//         Console.Write(arr[i] + " ");
 //     }
 //     Console.WriteLine(" ");
 // }
 
 // bool Search(int[] arr, int N)
 // {
-//     bool x=false;
+//     bool x = false;
 //     for (int i = 0; i < arr.Length; i++)
 //     {
-//         if (arr[i]==N) x=true;        
+//         if (arr[i] == N)
+//         {
+//             x = true;
+//             break;
+//         }
 //     }
 //     return x;
 // }
 
-// int[] array=RandArr(new Random().Next(10,15));
+// int[] array = RandArr(new Random().Next(10, 15));
 // Console.Write("Какое число ищем: ");
 // int a = int.Parse(Console.ReadLine());
 // PrintArr(array);
@@ -251,12 +251,7 @@
 // int Count(int[] arr)
 // {
 //     int x = 0;
-//     int i = 0;
-//     while (i < arr.Length)
-//     {
-//         x += arr[i];
-//         i = i + 2;
-//     }
+//     for (int i = 0; i < arr.Length; i+=2) x += arr[i];
 //     return x;
 // }
 
@@ -303,4 +298,33 @@
 // PrintArr(Count(array));
 
 // 40. В Указанном массиве вещественных чисел найдите разницу между максимальным и минимальным элементом
+
+// double[] MakeArr(int length)
+// {
+//     double[] arr = new double[length];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arr[i] = new Random().Next(-100, 100);
+//     }
+//     return arr;
+// }
+
+// double Calc(double[] arr)
+// {
+//     double min = arr[0];
+//     double max = arr[1];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (arr[i] > max) max = arr[i];
+//         if (arr[i] < min) min = arr[i];
+//     }
+//     return max - min;
+// }
+
+// double[] array = MakeArr(5);
+// Console.WriteLine(String.Join(", ", array));
+// Console.Write(Calc(array));
+
+
+
 
