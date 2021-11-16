@@ -80,11 +80,30 @@
 
 // 44. Найти точку пересечения двух прямых заданных уравнением y=kx+b, а1 k1 и а2 и k2 заданы
 
+// y=kx+b это уравнение прямой с угловым коэффициентом k
+
 
 
 // 45. Показать числа Фибоначчи
 
+// могу только void методом
 
+// void Fibo(int arg)
+// {
+//     int a = 0;
+//     int b = 1;
+//     int c = 0;
+//     Console.Write($"{a} {b}");
+//     for (int i = 1; i <= arg; i++)
+//     {
+//         c = a + b;
+//         Console.Write(" " + c);
+//         a = b;
+//         b = c;
+//     }
+// }
+
+// Fibo(15);
 
 // 46. Написать программу масштабирования фигуры
 
@@ -92,4 +111,28 @@
 
 // 47. Написать программу копирования массива
 
+// int[] RandArray(int a)
+// {
+//     int[] arrA = new int[a];
+//     for (int i = 0; i < arrA.Length; i++)
+//     {
+//         arrA[i] = new Random().Next(10, 20);
+//     }
+//     return arrA;
+// }
 
+// int[] Copy(int[] arr)
+// {
+//     int[] arrB = new int[arr.Length];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arrB[i] = arr[i];
+//     }
+//     return arrB;
+// }
+
+// int[] arrA=RandArray(7);
+
+// Console.Write(string.Join(" ", arrA));
+// Console.WriteLine();
+// Console.Write(string.Join(" ", Copy(arrA)));
