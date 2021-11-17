@@ -154,33 +154,33 @@
 
 // 3D методами с вводом
 
-double[] Enter()
-{
-    double[] coord = new double[6];
-    Console.WriteLine("X-координата первой точки: ");
-    coord[0] = double.Parse(Console.ReadLine());
-    Console.WriteLine("Y-координата первой точки: ");
-    coord[1] = double.Parse(Console.ReadLine());
-    Console.WriteLine("Z-координата первой точки: ");
-    coord[2] = double.Parse(Console.ReadLine());
-    Console.WriteLine("X-координата второй точки: ");
-    coord[3] = double.Parse(Console.ReadLine());
-    Console.WriteLine("Y-координата второй точки: ");
-    coord[4] = double.Parse(Console.ReadLine());
-    Console.WriteLine("Z-координата второй точки: ");
-    coord[5] = double.Parse(Console.ReadLine());
-    return coord;
-}
+// double[] Enter()
+// {
+//     double[] coord = new double[6];
+//     Console.WriteLine("X-координата первой точки: ");
+//     coord[0] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Y-координата первой точки: ");
+//     coord[1] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Z-координата первой точки: ");
+//     coord[2] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("X-координата второй точки: ");
+//     coord[3] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Y-координата второй точки: ");
+//     coord[4] = double.Parse(Console.ReadLine());
+//     Console.WriteLine("Z-координата второй точки: ");
+//     coord[5] = double.Parse(Console.ReadLine());
+//     return coord;
+// }
 
-double Pifagor()
-{
-    double[] coord = Enter();
-    double result = Math.Sqrt(Math.Pow(Math.Abs(coord[0] - coord[3]),2) 
-    + Math.Pow(Math.Abs(coord[1] - coord[4]),2) 
-    + Math.Pow(Math.Abs(coord[2] - coord[5]),2));
-    return result;
-}
+// double Pifagor()
+// {
+//     double[] coord = Enter();
+//     double result = Math.Sqrt(Math.Pow(Math.Abs(coord[0] - coord[3]),2) 
+//     + Math.Pow(Math.Abs(coord[1] - coord[4]),2) 
+//     + Math.Pow(Math.Abs(coord[2] - coord[5]),2));
+//     return result;
+// }
 
-Console.WriteLine("Расстояние между точками составляет " + Pifagor());
+// Console.WriteLine("Расстояние между точками составляет " + Pifagor());
 
 

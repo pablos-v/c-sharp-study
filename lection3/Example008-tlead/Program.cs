@@ -84,23 +84,21 @@
 // x, y - это координаты точек, лежащих на прямой
 // зная k и b и подставляя произвольные значения х, получим точку у и построим прямую
 
-// если к1==к2 - параллельны, b1==b2 - совпадают
+// (double, double) YaOfigel(double b1, double k1, double b2, double k2)
+// {
+//     double x = (b2 - b1) / (k1 - k2);
+//     double y = k1 * x + b1;
+//     return (x, y);
+// }
 
-(double, double) YaOfigel(double b1, double k1, double b2, double k2)
-{
-    double x = (b2 - b1) / (k1 - k2);
-    double y = k1 * x + b1;
-    return (x, y);
-}
+// double b1 = 1;
+// double k1 = -3;
+// double b2 = -1;
+// double k2 = 2;
 
-double b1 = 1;
-double k1 = -3;
-double b2 = -1;
-double k2 = 2;
-
-if (k1 == k2 && b1 != b2) Console.Write("Параллельны");
-else if (k1 == k2 && b1 == b2) Console.Write("Совпадают");
-else Console.Write("Точка пересечения: " + YaOfigel(b1, k1, b2, k2));
+// if (k1 == k2 && b1 != b2) Console.Write("Параллельны");
+// else if (k1 == k2 && b1 == b2) Console.Write("Совпадают");
+// else Console.Write("Точка пересечения: " + YaOfigel(b1, k1, b2, k2));
 
 // 45. Показать числа Фибоначчи
 
