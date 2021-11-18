@@ -1,14 +1,79 @@
 ﻿// 41. Выяснить являются ли три числа сторонами треугольника 
 // В треугольнике сумма длин двух любых сторон больше длины третьей стороны
 
-// bool TrianglRule(int a, int b, int c)
+// uint[] Enter() //ввести все 3 разом с провернкой
 // {
-//     return a + b > c && a + c > b && b + c > a;
+//     while (true)
+//     {
+//         Console.Write("Введите длины трёх сторон треугольника через запятую: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 3)
+//         {
+//             return TParse(enter);
+//             break;
+//         }
+//         else Console.Write("Ввести можно только 3 числа через запятую, попробуйте снова.\n");
+
+//     }
 // }
 
-// Console.Write(TrianglRule(5, 8, 6));
+// uint[] TParse(string[] arr)
+// {
+//     uint[] abc = new uint[3];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         if (uint.TryParse(arr[i], out uint num)) abc[i] = num;
+//         else
+//         {
+//             Console.Write("Длина стороны может быть только целым положительным числом. Перезапустите программу.");
+//             Environment.Exit(0);
+//         }
+//     }
+//     return abc;
+// }
+
+// bool TrianglRule(uint[] abc)
+// {
+//     return abc[0] + abc[1] > abc[2] && abc[0] + abc[2] > abc[1] && abc[1] + abc[2] > abc[0];
+// }
+
+// if (TrianglRule(Enter())) Console.Write("Да, из этого можно слепить треугольник.");
+// else Console.Write("Такого треугольника быть не может.");
 
 // 42. Определить сколько чисел больше 0 введено с клавиатуры
+
+
+uint[] Enter() //ввести все 3 разом с провернкой
+{
+    while (true)
+    {
+        Console.Write("Введите длины трёх сторон треугольника через запятую: ");
+        string[] enter = Console.ReadLine().Split(',', ' ');
+        if (enter.Length == 3)
+        {
+            return TParse(enter);
+            break;
+        }
+        else Console.Write("Ввести можно только 3 числа через запятую, попробуйте снова.\n");
+
+    }
+}
+
+uint[] TParse(string[] arr)
+{
+    uint[] abc = new uint[3];
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (uint.TryParse(arr[i], out uint num)) abc[i] = num;
+        else
+        {
+            Console.Write("Длина стороны может быть только целым положительным числом. Перезапустите программу.");
+            Environment.Exit(0);
+        }
+    }
+    return abc;
+}
+
 
 // int F42(int N)
 // {
@@ -102,7 +167,7 @@
 
 // 45. Показать числа Фибоначчи
 
-// могу только void методом
+// могу только void методом ЧЕРЕЗ массив!!!!
 
 // void Fibo(int arg)
 // {
@@ -122,6 +187,8 @@
 // Fibo(15);
 
 // 46. Написать программу масштабирования фигуры
+// + ПРОВЕРКА ВВОДА
+// (1;2),(3;5),
 
 // int Len() // задать форму
 // {
@@ -129,7 +196,7 @@
 //     return int.Parse(Console.ReadLine());
 // }
 
-// double[,] Figure(int length) // задать фигуру
+// double[,] Figure(int length) // задать фигуру  массив кортежей!!
 // {
 //     double[,] coordinates = new double[length, 2];
 //     string axis = string.Empty;
