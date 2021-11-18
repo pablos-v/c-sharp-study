@@ -42,52 +42,39 @@
 
 // 42. Определить сколько чисел больше 0 введено с клавиатуры
 
-
-uint[] Enter() //ввести все 3 разом с провернкой
-{
-    while (true)
-    {
-        Console.Write("Введите длины трёх сторон треугольника через запятую: ");
-        string[] enter = Console.ReadLine().Split(',', ' ');
-        if (enter.Length == 3)
-        {
-            return TParse(enter);
-            break;
-        }
-        else Console.Write("Ввести можно только 3 числа через запятую, попробуйте снова.\n");
-
-    }
-}
-
-uint[] TParse(string[] arr)
-{
-    uint[] abc = new uint[3];
-    for (int i = 0; i < arr.Length; i++)
-    {
-        if (uint.TryParse(arr[i], out uint num)) abc[i] = num;
-        else
-        {
-            Console.Write("Длина стороны может быть только целым положительным числом. Перезапустите программу.");
-            Environment.Exit(0);
-        }
-    }
-    return abc;
-}
-
-
-// int F42(int N)
+// int Enter() // с проверкой
 // {
 //     int count = 0;
-//     for (int i = 0; i < N; i++)
-//     {
-//         Console.Write("Введите число: ");
-//         int number = int.Parse(Console.ReadLine());
-//         if (number > 0) count++;
-//     }
-//     return count;
+//         Console.Write("Введите ряд чисел через запятую или через пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         for (int i = 0; i < enter.Length; i++)
+//         {
+//             if (double.TryParse(enter[i], out double num))
+//             {
+//                 if (num > 0) count++;
+//             }
+//             else
+//             {
+//                 Console.Write("Хватит хулиганить, давайте заново.");
+//                 Environment.Exit(0);
+//             }
+//         }
+//             return count;
 // }
 
-// Console.Write(F42(5));
+// int Enter() //без проверки
+// {
+//     int count = 0;
+//         Console.Write("Введите ряд чисел через запятую или через пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         for (int i = 0; i < enter.Length; i++)
+//         {
+//             if (double.TryParse(enter[i], out double num) && num > 0) count++;
+//         }
+//         return count;
+// }
+
+// Console.Write($"Вы указали {Enter()} чисел больших 0.");
 
 // 43. Написать программу преобразования десятичного числа в двоичное
 
@@ -116,7 +103,17 @@ uint[] TParse(string[] arr)
 
 // Console.Write(string.Join("", Converter(20)));
 
-// через строку
+// через строку со вводом
+
+// int Enter()
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите десятичное число: ");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.Write("Ввести нужно десятичное число, попробуйте снова.\n");
+//     }
+// }
 
 // string Converter(int arg)
 // {
@@ -129,7 +126,7 @@ uint[] TParse(string[] arr)
 //     return res;
 // }
 
-// Console.Write(Converter(20));
+// Console.Write(Converter(Enter()));
 
 // рекурсивно подсмотрел
 // string FuncTo2(int a)
@@ -167,7 +164,17 @@ uint[] TParse(string[] arr)
 
 // 45. Показать числа Фибоначчи
 
-// могу только void методом ЧЕРЕЗ массив!!!!
+// void методом 
+
+// int Enter()
+// {
+//     while (true)
+//     {
+//         Console.Write("До какого числа будем Фибоначчить?: ");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.Write("Ввести нужно десятичное положительное число, попробуйте снова.\n");
+//     }
+// }
 
 // void Fibo(int arg)
 // {
@@ -175,7 +182,7 @@ uint[] TParse(string[] arr)
 //     int b = 1;
 //     int c = 0;
 //     Console.Write($"{a} {b}");
-//     for (int i = 1; i <= arg; i++)
+//     for (int i = 3; i <= arg; i++)
 //     {
 //         c = a + b;
 //         Console.Write(" " + c);
@@ -184,77 +191,109 @@ uint[] TParse(string[] arr)
 //     }
 // }
 
-// Fibo(15);
+// Fibo(Enter());
+
+// ЧЕРЕЗ массив!!!!
+
+// int Enter()
+// {
+//     while (true)
+//     {
+//         Console.Write("До какого числа будем Фибоначчить?: ");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.Write("Ввести нужно десятичное положительное число, попробуйте снова.\n");
+//     }
+// }
+
+// int[] Fibo(int arg)
+// {
+//     int[] arr = new int[arg];
+//     int a = 0;
+//     int b = 1;
+//     int c = 0;
+//     arr[0] = 0;
+//     arr[1] = 1;
+//     for (int i = 2; i <= arg-1; i++)
+//     {
+//         c = a + b;
+//         arr[i] = c;
+//         a = b;
+//         b = c;
+//     }
+//     return arr;
+// }
+
+// Console.Write(string.Join(" ", Fibo(Enter())));
 
 // 46. Написать программу масштабирования фигуры
 // + ПРОВЕРКА ВВОДА
 // (1;2),(3;5),
 
-// int Len() // задать форму
-// {
-//     Console.WriteLine("Сколько опорных точек у фигуры: ");
-//     return int.Parse(Console.ReadLine());
-// }
+int Len() // задать форму
+{
+    Console.WriteLine("Сколько опорных точек у фигуры: ");
+    return int.Parse(Console.ReadLine());
+}
 
-// double[,] Figure(int length) // задать фигуру  массив кортежей!!
-// {
-//     double[,] coordinates = new double[length, 2];
-//     string axis = string.Empty;
-//     for (int i = 0; i < length; i++)
-//     {
-//         axis = "x";
-//         for (int j = 0; j < 2; j++)
-//         {
-//             Console.WriteLine($"Введите координату {axis} {i + 1} точки: ");
-//             coordinates[i, j] = double.Parse(Console.ReadLine());
-//             axis = "y";
-//         }
-//     }
-//     return coordinates;
-// }
+double[,] Figure(int length) // задать фигуру  массив кортежей!!
+{
+    double[,] coordinates = new double[length, 2];
+    string axis = string.Empty;
+    for (int i = 0; i < length; i++)
+    {
+        axis = "x";
+        for (int j = 0; j < 2; j++)
+        {
+            Console.WriteLine($"Введите координату {axis} {i + 1} точки: ");
+            coordinates[i, j] = double.Parse(Console.ReadLine());
+            axis = "y";
+        }
+    }
+    return coordinates;
+}
 
-// double Mult() // задать кратность
-// {
-//     Console.WriteLine("Задайте кратность масштабирования: ");
-//     double resize = double.Parse(Console.ReadLine());
-//     return resize;
-// }
+double Mult() // задать кратность
+{
+    Console.WriteLine("Задайте кратность масштабирования: ");
+    double resize = double.Parse(Console.ReadLine());
+    return resize;
+}
 
-// double[,] Formula(double[,] arr, double k, int len) // формула
-// {
-//     double[,] answer = new double[len, 2];
-//     for (int i = 0; i < len; i++)
-//     {
-//         for (int j = 0; j < 2; j++)
-//         {
-//             answer[i, j] = arr[i, j] * k;
-//         }
-//     }
-//     return answer;
-// }
+double[,] Formula(double[,] arr, double k, int len) // формула
+{
+    double[,] answer = new double[len, 2];
+    for (int i = 0; i < len; i++)
+    {
+        for (int j = 0; j < 2; j++)
+        {
+            answer[i, j] = arr[i, j] * k;
+        }
+    }
+    return answer;
+}
 
-// void PrintIt(int len, double[,] arr)
-// {
-// string axis = string.Empty;
-// for (int i = 0; i < len; i++)
-// {
-//     Console.Write($"\n{i + 1} точка: ");
-//     axis = "x=";
-//     for (int j = 0; j < 2; j++)
-//     {
-//         Console.Write(axis + string.Join("", arr[i, j])+ " ");
-//         axis = "y=";
-//     }
-// }
-// }
+void PrintIt(int len, double[,] arr)
+{
+string axis = string.Empty;
+for (int i = 0; i < len; i++)
+{
+    Console.Write($"\n{i + 1} точка: ");
+    axis = "x=";
+    for (int j = 0; j < 2; j++)
+    {
+        Console.Write(axis + string.Join("", arr[i, j])+ " ");
+        axis = "y=";
+    }
+}
+}
 
-// int len = Len();
-// double[,] arr = Figure(len);
-// double[,] arr2 = Formula(arr, Mult(), len);
+int len = Len();
+double[,] arr = Figure(len);
+double[,] arr2 = Formula(arr, Mult(), len);
 
-// Console.WriteLine("Координаты опорных точек заданной фигуры: "); PrintIt(len, arr);
-// Console.WriteLine("\n");
-// Console.WriteLine("Координаты опорных точек масштабированной фигуры: "); PrintIt(len, arr2);
+Console.WriteLine("Координаты опорных точек заданной фигуры: "); PrintIt(len, arr);
+Console.WriteLine("\n");
+Console.WriteLine("Координаты опорных точек масштабированной фигуры: "); PrintIt(len, arr2);
 
 // 47. Написать программу копирования массива
 
