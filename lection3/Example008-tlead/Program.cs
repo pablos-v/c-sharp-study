@@ -228,72 +228,138 @@
 // 46. Написать программу масштабирования фигуры
 // + ПРОВЕРКА ВВОДА
 // (1;2),(3;5),
+// ------------1 вариант-------------------------
+// int Len() // задать форму
+// {
+//     Console.WriteLine("Сколько опорных точек у фигуры: ");
+//     return int.Parse(Console.ReadLine());
+// }
+
+// double[,] Figure(int length) // задать фигуру  массив кортежей!!
+// {
+//     double[,] coordinates = new double[length, 2];
+//     string axis = string.Empty;
+//     for (int i = 0; i < length; i++)
+//     {
+//         axis = "x";
+//         for (int j = 0; j < 2; j++)
+//         {
+//             Console.WriteLine($"Введите координату {axis} {i + 1} точки: ");
+//             coordinates[i, j] = double.Parse(Console.ReadLine());
+//             axis = "y";
+//         }
+//     }
+//     return coordinates;
+// }
+
+// double Mult() // задать кратность
+// {
+//     Console.WriteLine("Задайте кратность масштабирования: ");
+//     double resize = double.Parse(Console.ReadLine());
+//     return resize;
+// }
+
+// double[,] Formula(double[,] arr, double k, int len) // формула
+// {
+//     double[,] answer = new double[len, 2];
+//     for (int i = 0; i < len; i++)
+//     {
+//         for (int j = 0; j < 2; j++)
+//         {
+//             answer[i, j] = arr[i, j] * k;
+//         }
+//     }
+//     return answer;
+// }
+
+// void PrintIt(int len, double[,] arr)
+// {
+// string axis = string.Empty;
+// for (int i = 0; i < len; i++)
+// {
+//     Console.Write($"\n{i + 1} точка: ");
+//     axis = "x=";
+//     for (int j = 0; j < 2; j++)
+//     {
+//         Console.Write(axis + string.Join("", arr[i, j])+ " ");
+//         axis = "y=";
+//     }
+// }
+// }
+
+// int len = Len();
+// double[,] arr = Figure(len);
+// double[,] arr2 = Formula(arr, Mult(), len);
+
+// Console.WriteLine("Координаты опорных точек заданной фигуры: "); PrintIt(len, arr);
+// Console.WriteLine("\n");
+// Console.WriteLine("Координаты опорных точек масштабированной фигуры: "); PrintIt(len, arr2);
+
+// ------------ 2 вариант -------------------------
 
 int Len() // задать форму
 {
-    Console.WriteLine("Сколько опорных точек у фигуры: ");
-    return int.Parse(Console.ReadLine());
+    while (true)
+    {
+        Console.WriteLine("Сколько опорных точек у фигуры: ");
+        if (int.TryParse(Console.ReadLine(), out int num)) return num;
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+    }
 }
 
-double[,] Figure(int length) // задать фигуру  массив кортежей!!
+double[] Enter(int length) // задать фигуру
 {
-    double[,] coordinates = new double[length, 2];
-    string axis = string.Empty;
-    for (int i = 0; i < length; i++)
+    while (true)
     {
-        axis = "x";
-        for (int j = 0; j < 2; j++)
+        double[] coordinates = new double[length * 2];
+        Console.WriteLine("Введите координаты точек в формате (x1,y1) (x2,y2): ");
+        string[] enter = Console.ReadLine().Split(',', ' ', ')', '(');
+        while (enter.Length == length * 2)
         {
-            Console.WriteLine($"Введите координату {axis} {i + 1} точки: ");
-            coordinates[i, j] = double.Parse(Console.ReadLine());
-            axis = "y";
+            int count = 0;
+            for (int i = 0; i < length * 2; i++)
+            {
+                if (double.TryParse(enter[i], out double num)) coordinates[i] = num;
+                else count = 1;
+            }
+            if (count == 0) return coordinates;
+            else break;
         }
+        Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
     }
-    return coordinates;
 }
 
 double Mult() // задать кратность
 {
-    Console.WriteLine("Задайте кратность масштабирования: ");
-    double resize = double.Parse(Console.ReadLine());
-    return resize;
-}
-
-double[,] Formula(double[,] arr, double k, int len) // формула
-{
-    double[,] answer = new double[len, 2];
-    for (int i = 0; i < len; i++)
+    while (true)
     {
-        for (int j = 0; j < 2; j++)
-        {
-            answer[i, j] = arr[i, j] * k;
-        }
-    }
-    return answer;
-}
-
-void PrintIt(int len, double[,] arr)
-{
-string axis = string.Empty;
-for (int i = 0; i < len; i++)
-{
-    Console.Write($"\n{i + 1} точка: ");
-    axis = "x=";
-    for (int j = 0; j < 2; j++)
-    {
-        Console.Write(axis + string.Join("", arr[i, j])+ " ");
-        axis = "y=";
+        Console.WriteLine("Задайте кратность масштабирования: ");
+        if (int.TryParse(Console.ReadLine(), out int num)) return num;
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
     }
 }
+
+(double x, double y)[] Cortage(double[] arr, double k) //  метод разбора на кортежи + масштабирование
+{
+    (double x, double y)[] coor = new (double x, double y)[arr.Length];
+    int d = 0;
+    for (int i = 0; i < arr.Length; i += 2)
+    {
+        coor[d++] = (arr[i]*k, arr[i + 1]*k);
+    }
+    return coor;
 }
 
-int len = Len();
-double[,] arr = Figure(len);
-double[,] arr2 = Formula(arr, Mult(), len);
+void PrintIt((double x, double y)[] arr)
+{
+    Console.WriteLine("Координаты опорных точек масштабированной фигуры: ");
+    for (int i = 0; i < arr.Length / 2; i++)
+    {
+        Console.WriteLine(string.Join(' ', arr[i]));
+    }
+}
 
-Console.WriteLine("Координаты опорных точек заданной фигуры: "); PrintIt(len, arr);
-Console.WriteLine("\n");
-Console.WriteLine("Координаты опорных точек масштабированной фигуры: "); PrintIt(len, arr2);
+PrintIt(Cortage(Enter(Len()), Mult()));
 
 // 47. Написать программу копирования массива
 
