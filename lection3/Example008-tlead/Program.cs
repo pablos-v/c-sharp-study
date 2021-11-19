@@ -297,72 +297,73 @@
 
 // ------------ 2 вариант -------------------------
 
-int Len() // задать форму
-{
-    while (true)
-    {
-        Console.WriteLine("Сколько опорных точек у фигуры: ");
-        if (int.TryParse(Console.ReadLine(), out int num)) return num;
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
-    }
-}
+// int Len() // задать форму
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Сколько опорных точек у фигуры: ");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
-double[] Enter(int length) // задать фигуру
-{
-    while (true)
-    {
-        double[] coordinates = new double[length * 2];
-        Console.WriteLine("Введите координаты точек в формате (x1,y1) (x2,y2): ");
-        string[] enter = Console.ReadLine().Split(',', ' ', ')', '(');
-        while (enter.Length == length * 2)
-        {
-            int count = 0;
-            for (int i = 0; i < length * 2; i++)
-            {
-                if (double.TryParse(enter[i], out double num)) coordinates[i] = num;
-                else count = 1;
-            }
-            if (count == 0) return coordinates;
-            else break;
-        }
-        Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
-    }
-}
+// double[] Enter(int length) // задать фигуру
+// {
+//     while (true)
+//     {
+//         double[] coordinates = new double[length * 2];
+//         Console.WriteLine("Введите координаты точек в формате (x1,y1) (x2,y2): ");
+//         string[] enter = Console.ReadLine().Split(',', ' ', ')', '(');
+//         while (enter.Length == length * 2)
+//         {
+//             int count = 0;
+//             for (int i = 0; i < length * 2; i++)
+//             {
+//                 if (double.TryParse(enter[i], out double num)) coordinates[i] = num;
+//                 else count = 1;
+//             }
+//             if (count == 0) return coordinates;
+//             else break;
+//         }
+//         Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
-double Mult() // задать кратность
-{
-    while (true)
-    {
-        Console.WriteLine("Задайте кратность масштабирования: ");
-        if (int.TryParse(Console.ReadLine(), out int num)) return num;
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
-    }
-}
+// double Mult() // задать кратность
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Задайте кратность масштабирования: ");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
-(double x, double y)[] Cortage(double[] arr, double k) //  метод разбора на кортежи + масштабирование
-{
-    (double x, double y)[] coor = new (double x, double y)[arr.Length];
-    int d = 0;
-    for (int i = 0; i < arr.Length; i += 2)
-    {
-        coor[d++] = (arr[i]*k, arr[i + 1]*k);
-    }
-    return coor;
-}
+// (double x, double y)[] Cortage(double[] arr, double k) //  метод разбора на кортежи + масштабирование
+// {
+//     (double x, double y)[] coor = new (double x, double y)[arr.Length];
+//     int d = 0;
+//     for (int i = 0; i < arr.Length; i += 2)
+//     {
+//         coor[d++] = (arr[i]*k, arr[i + 1]*k);
+//     }
+//     return coor;
+// }
 
-void PrintIt((double x, double y)[] arr)
-{
-    Console.WriteLine("Координаты опорных точек масштабированной фигуры: ");
-    for (int i = 0; i < arr.Length / 2; i++)
-    {
-        Console.WriteLine(string.Join(' ', arr[i]));
-    }
-}
+// void PrintIt((double x, double y)[] arr)
+// {
+//     Console.WriteLine("Координаты опорных точек масштабированной фигуры: ");
+//     for (int i = 0; i < arr.Length / 2; i++)
+//     {
+//         Console.WriteLine(string.Join(' ', arr[i]));
+//     }
+// }
 
-PrintIt(Cortage(Enter(Len()), Mult()));
+// PrintIt(Cortage(Enter(Len()), Mult()));
 
 // 47. Написать программу копирования массива
 
+// 1 вариант без ввода
 // int[] RandArray(int a)
 // {
 //     int[] arrA = new int[a];
@@ -388,3 +389,35 @@ PrintIt(Cortage(Enter(Len()), Mult()));
 // Console.Write(string.Join(" ", arrA));
 // Console.WriteLine();
 // Console.Write(string.Join(" ", Copy(arrA)));
+
+// 2 вариант со вводом и проверкой----------------------------
+
+// int[] Enter()
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите массив чисел, разделяя их пробелом или запятыми: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         int[] arr = new int[enter.Length];
+//         bool fault = false;
+//         for (int i = 0; i < arr.Length; i++)
+//         {
+//             if (int.TryParse(enter[i], out int num)) arr[i] = num;
+//             else fault = true;
+//         }
+//         if (fault) Console.WriteLine("Что-то введено не так, давайте попробуем снова.");
+//         else return arr;
+//     }
+// }
+
+// int[] Copy(int[] arr)
+// {
+//     int[] arrB = new int[arr.Length];
+//     for (int i = 0; i < arr.Length; i++)
+//     {
+//         arrB[i] = arr[i];
+//     }
+//     return arrB;
+// }
+
+// Console.Write(string.Join(" ", Copy(Enter())));
