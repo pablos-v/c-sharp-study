@@ -171,7 +171,7 @@
 //     while (true)
 //     {
 //         Console.Write("До какого числа будем Фибоначчить?: ");
-//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         if (int.TryParse(Console.ReadLine(), out int num && num > 0)) return num;
 //         else Console.Write("Ввести нужно десятичное положительное число, попробуйте снова.\n");
 //     }
 // }
@@ -200,7 +200,7 @@
 //     while (true)
 //     {
 //         Console.Write("До какого числа будем Фибоначчить?: ");
-//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         if (int.TryParse(Console.ReadLine(), out int num) && num > 0) return num;
 //         else Console.Write("Ввести нужно десятичное положительное число, попробуйте снова.\n");
 //     }
 // }
@@ -208,17 +208,12 @@
 // int[] Fibo(int arg)
 // {
 //     int[] arr = new int[arg];
-//     int a = 0;
-//     int b = 1;
-//     int c = 0;
+//     if (arg == 1) return arr;
 //     arr[0] = 0;
 //     arr[1] = 1;
-//     for (int i = 2; i <= arg-1; i++)
+//     for (int i = 2; i <= arg - 1; i++)
 //     {
-//         c = a + b;
-//         arr[i] = c;
-//         a = b;
-//         b = c;
+//         arr[i] = arr[i - 1] + arr[i - 2];
 //     }
 //     return arr;
 // }
