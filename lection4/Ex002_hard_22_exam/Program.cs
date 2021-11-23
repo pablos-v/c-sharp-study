@@ -4,51 +4,80 @@
 // делятся хотябы на k или на l --- count2
 // не делятся на (k + l) --- count3
 
-(uint, int, int) EnterN()
-{
-    while (true)
-    {
-        Console.Write("Укажите числа n, k, l через запятую: ");
-        string[] enter = Console.ReadLine().Split(',', ' ');
-        if (enter.Length == 3 && uint.TryParse(enter[0], out uint n) && int.TryParse(enter[1], out int k)
-        && int.TryParse(enter[2], out int l)) return (n, k, l);
+// (uint, int, int) EnterN()
+// {
+//     while (true)
+//     {
+//         Console.Write("Укажите числа n, k, l через запятую: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 3 && uint.TryParse(enter[0], out uint n) && int.TryParse(enter[1], out int k)
+//         && int.TryParse(enter[2], out int l)) return (n, k, l);
 
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
-    }
-}
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
-(int, int, int) Counter(uint n, int k, int l)
-{
-    (int c1, int c2, int c3) ans = (0, 0, 0);
-    for (int i = 0; i <= n; i++)
-    {
-        if (i / k == 0 && i / l != 0) ans.c1++;
-        if (i / k == 0 || i / l == 0) ans.c2++;
-        if (i / (k + l) != 0) ans.c3++;
-    }
-    return (ans.c1, ans.c2, ans.c3);
-}
+// (int, int, int) Counter(uint n, int k, int l)
+// {
+//     (int c1, int c2, int c3) ans = (0, 0, 0);
+//     for (int i = 0; i <= n; i++)
+//     {
+//         if (i / k == 0 && i / l != 0) ans.c1++;
+//         if (i / k == 0 || i / l == 0) ans.c2++;
+//         if (i / (k + l) != 0) ans.c3++;
+//     }
+//     return (ans.c1, ans.c2, ans.c3);
+// }
 
-(uint n, int k, int l) enter = EnterN();
-(int c1, int c2, int c3) answers = Counter(enter.n, enter.k, enter.l);
+// (uint n, int k, int l) enter = EnterN();
+// (int c1, int c2, int c3) answers = Counter(enter.n, enter.k, enter.l);
 
-Console.WriteLine("Во множестве натуральных чисел от 0 до " + enter.n);
-Console.WriteLine(answers.c1 + " чисел делятся на " + enter.k + ", но не делятся на " + enter.l);
-Console.WriteLine(answers.c2 + " чисел делятся на " + enter.k + " или на " + enter.l);
-Console.WriteLine(answers.c3 + " чисел не делятся на сумму (" + enter.k + " + " + enter.l + ")");
+// Console.WriteLine("Во множестве натуральных чисел от 0 до " + enter.n);
+// Console.WriteLine(answers.c1 + " чисел делятся на " + enter.k + ", но не делятся на " + enter.l);
+// Console.WriteLine(answers.c2 + " чисел делятся на " + enter.k + " или на " + enter.l);
+// Console.WriteLine(answers.c3 + " чисел не делятся на сумму (" + enter.k + " + " + enter.l + ")");
 
 // Задача 2
 // Задать положительное вещественное число m. Cоставить целое число n из цифр
-
 // десятков и сотых m
 // единиц и сотых m
 // сотен и десятых m
+
+// double EnterNum() // задать число 6152.43
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Задайте положительное вещественное число: ");
+//         if (double.TryParse(Console.ReadLine(), out double num) && num > 0) return num;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// (int, int, int) Combine(double n)
+// {
+//     (int, int, int) res = (0, 0, 0);
+//     res.Item1 = Convert.ToInt32(n) / 10 % 10 * 100 + (Convert.ToInt32(n * 100) % 100);
+//     res.Item2 = Convert.ToInt32(n) % 10 * 100 + (Convert.ToInt32(n * 100) % 100);
+//     res.Item3 = Convert.ToInt32(n) / 100 % 10 * 10 + (Convert.ToInt32(n * 10) % 10);
+//     return res;
+// }
+
+// (int a, int b, int c) res = Combine(EnterNum());
+
+// Console.WriteLine("Из десятков и сотых: " + res.a);
+// Console.WriteLine("Из единиц и сотых: " + res.b);
+// Console.WriteLine("Из сотен и десятых: " + res.c);
+
 // Задача 3
 // Написать программу, вычисляющую значение периодической функции f(x), в произвольной точке x, если на промежутке [a;b], который составляет один её период, значения функции вычисляются по формуле
 
 // [-3; 3], f(x) = |x| - 1
 // [-10; -2], f(x) = 1/x + 0.6
 // [-4; 3], f(x) = Cos(|π*x|)
+
+
+
+
 // Задача 4
 // Даны координаты концов двух отрезков [a; b], [c; d]. Верно ли, что
 
