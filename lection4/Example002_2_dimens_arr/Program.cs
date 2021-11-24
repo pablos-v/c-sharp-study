@@ -1,6 +1,46 @@
 ﻿
 // ## Двумерные массивы
 // 48. Показать двумерный массив размером m×n заполненный целыми числами
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
+//         int.TryParse(enter[1], out int n)) return (m,n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(-9, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// PrintArray(RandArray(Len()));
+
 // 49. Показать двумерный массив размером m×n заполненный вещественными числами
 // 50. В двумерном массиве n×k заменить четные элементы на противоположные
 // 51. Задать двумерный массив следующим правилом: Aₘₙ = m+n
@@ -24,3 +64,4 @@
 //  12 13 14  5
 //  11 16 15  6
 //  10  9  8  7 
+
