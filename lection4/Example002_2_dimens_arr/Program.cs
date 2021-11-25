@@ -42,7 +42,50 @@
 // PrintArray(RandArray(Len()));
 
 // 49. Показать двумерный массив размером m×n заполненный вещественными числами
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
+//         int.TryParse(enter[1], out int n)) return (m,n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// double[,] RandArray((int m, int n) mn)
+// {
+//     double[,] array = new double[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = Math.Round((new Random().NextDouble() * 100),2);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(double[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// PrintArray(RandArray(Len()));
+
 // 50. В двумерном массиве n×k заменить четные элементы на противоположные
+
+
+
 // 51. Задать двумерный массив следующим правилом: Aₘₙ = m+n
 // 52. В двумерном массиве заменить элементы, у которых оба индекса чётные на их квадраты
 // 53. В двумерном массиве показать позиции числа, заданного пользователем или указать, что такого элемента нет
