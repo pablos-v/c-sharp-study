@@ -83,13 +83,236 @@
 // PrintArray(RandArray(Len()));
 
 // 50. В двумерном массиве n×k заменить четные элементы на противоположные
+// по знаку?
 
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(-9, 10);
+//         }
+//     }
+//     return array;
+// }
 
-// 51. Задать двумерный массив следующим правилом: Aₘₙ = m+n
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// int[,] ReversEven(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (arr[i, j] % 2 == 0) arr[i, j] *= -1;
+//         }
+//     }
+//     return arr;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.WriteLine();
+// PrintArray(ReversEven(arr));
+
+// 51. Задать двумерный массив следующим правилом: arr[m,n] = m + n.
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] FillArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = i+j;
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// PrintArray(FillArray(Len()));
+
 // 52. В двумерном массиве заменить элементы, у которых оба индекса чётные на их квадраты
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(-9, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+//     Console.WriteLine();
+// }
+
+// int[,] ReverseEvenIndex(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (i % 2 == 0 && j % 2 == 0) arr[i, j] *= Math.Abs(arr[i, j]);
+//         }
+//     }
+//     return arr;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// PrintArray(ReverseEvenIndex(arr));
+
 // 53. В двумерном массиве показать позиции числа, заданного пользователем или указать, что такого элемента нет
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(-20, 21);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int RequestNumber() // ввод чисел
+// {
+//     while (true)
+//     {
+//         Console.Write("Какое число ищем:");
+//         if (int.TryParse(Console.ReadLine(), out int num)) return num;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// (int m, int n) Check(int[,] arr, int num)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int k = 0; k < arr.GetLength(1); k++)
+//         {
+//             if (arr[i, k] == num) return (i, k);
+//         }
+//     }
+//     return (-1, -1);
+// }
+
+// void Out((int m, int n) num)
+// {
+//     if (num.m == -1) Console.WriteLine("Нет такого.");
+//     else Console.WriteLine($"Выбранное вами число нахоится в строке {num.m}, столбце {num.n}.");
+//     Console.WriteLine();
+// }
+
+// int[,] arr = RandArray(Len());
+// Out(Check(arr, RequestNumber()));
+// PrintArray(arr);
+
 // 54. В матрице чисел найти сумму элементов главной диагонали
+
+
+
 // 55. Дан целочисленный массив. Найти среднее арифметическое каждого из столбцов.
 // 56. Написать программу, которая обменивает элементы первой строки и последней строки
 // 57. Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
