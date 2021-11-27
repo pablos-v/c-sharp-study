@@ -64,4 +64,3 @@ void MakeMove((int count, int secretNumber) var)
 MakeMove(GameInit());
 
 
-
