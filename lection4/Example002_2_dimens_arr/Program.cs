@@ -7,7 +7,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
 //         int.TryParse(enter[1], out int n)) return (m,n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -48,7 +48,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
 //         int.TryParse(enter[1], out int n)) return (m,n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -90,7 +90,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -147,7 +147,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -188,7 +188,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -244,7 +244,7 @@
 //     while (true)
 //     {
 //         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -311,9 +311,60 @@
 
 // 54. В матрице чисел найти сумму элементов главной диагонали
 
+// int Len() // задать матрицу
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Укажите длину стороны матрицы чисел: ");
+//         if (int.TryParse(Console.ReadLine(), out int n)) return n;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
+// int[,] RandArray(int n)
+// {
+//     int[,] array = new int[n, n];
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int SumDiag(int[,] arr)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         sum += arr[i, i];
+//     }
+//     return sum;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.WriteLine();
+// Console.WriteLine("Сумма элементов главной диагонали: " + SumDiag(arr));
 
 // 55. Дан целочисленный массив. Найти среднее арифметическое каждого из столбцов.
+
+
+
 // 56. Написать программу, которая обменивает элементы первой строки и последней строки
 // 57. Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
 // 58. Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
