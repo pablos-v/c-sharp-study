@@ -6,7 +6,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
 //         int.TryParse(enter[1], out int n)) return (m,n);
@@ -47,7 +47,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) && 
 //         int.TryParse(enter[1], out int n)) return (m,n);
@@ -89,7 +89,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
@@ -146,7 +146,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
@@ -187,7 +187,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
@@ -243,7 +243,7 @@
 // {
 //     while (true)
 //     {
-//         Console.WriteLine("Введите количество строк и столбцов массива через запятую или пробел: ");
+//         Console.WriteLine("Введите количество строк и столбцов массива через запятую: ");
 //         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
@@ -367,8 +367,8 @@
 // {
 //     while (true)
 //     {
-//         Console.Write("Введите количество строк и столбцов массива через запятую или пробел: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ');
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -416,13 +416,69 @@
 
 // int[,] arr = RandArray(Len());
 // PrintArray(arr);
-// Console.Write("Среднее арифметическое столбцов: "); Console.Write(string.Join(' ', Average(arr)));
+// Console.Write("Среднее арифметическое столбцов: " + string.Join(' ', Average(arr)));
 
 // 56. Написать программу, которая обменивает элементы первой строки и последней строки
 
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int[,] Swap(int[,] arr)
+// {
+//     int sw = 0;
+//     int last = arr.GetLength(0)-1;
+//     for (int i = 0; i < arr.GetLength(1); i++)
+//     {
+//         sw = arr[0, i];
+//         arr[0, i] = arr[last,i];
+//         arr[last,i] =sw;
+//     }
+//     return arr;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.WriteLine();
+// PrintArray(Swap(arr));
+
+// 57. Написать программу упорядочивания по убыванию элементов каждой строки двумерного массива.
 
 
-// 57. Написать программу, упорядочивания по убыванию элементы каждой строки двумерной массива.
+
 // 58. Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
 // 59. В прямоугольной матрице найти строку с наименьшей суммой элементов.
 // 60. Составить частотный словарь элементов двумерного массива
