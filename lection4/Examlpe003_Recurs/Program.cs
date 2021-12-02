@@ -57,15 +57,55 @@
 
 // 70. Найти сумму цифр числа
 
-int SumNum(int num)
-{
-    if (num == 0) return 0;
-    else return (num % 10) + SumNum(num / 10);
-}
+// int SumNum(int num)
+// {
+//     if (num == 0) return 0;
+//     else return (num % 10) + SumNum(num / 10);
+// }
 
-Console.Write(SumNum(4567));
+// Console.Write(SumNum(4567));
 
 // 71. Написать программу вычисления функции Аккермана
-// 72. Написать программу возведения числа А в целую стень B
-// 73. Написать программу показывающие первые N чисел, для которых каждое следующее равно сумме двух предыдущих. Первые два элемента последовательности задаются пользователем
+
+// тут нужно быть математиком!!!!
+
+// 72. Написать программу возведения числа А в целую степень B
+
+// int Pow(int a, int b)
+// {
+//     if (b == 1) return a;
+//     else return a * Pow(a, b - 1);
+// }
+
+// int Pow2(int a, int b) => (b == 1) ? a : a * Pow(a, b - 1);
+
+// Console.Write(Pow2(3, 3));
+
+// 73. Написать программу показывающие первые N чисел, для которых каждое следующее 
+// равно сумме двух предыдущих. Первые два элемента последовательности задаются пользователем
+//  Фибоначчи чтоли?
+
+(int a, int b) Enter()
+{
+    while (true)
+    {
+        Console.Write("Введите первые два числа через запятую: ");
+        string[] nums = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (nums.Length == 2 && int.TryParse(nums[0], out int a) && int.TryParse(nums[1], out int b) && (a < b)) return (a, b);
+        else if (nums.Length == 2 && int.TryParse(nums[0], out int c) && int.TryParse(nums[1], out int d) && (c > d)) return (d, c);
+        else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
+    }
+}
+
+string Fibo(int n, (int a, int b) start)
+{
+    if (n <= 2) return ($"{start.a + start.b}");
+
+    return ((start.a + start.b) + " " + Fibo(n - 1, (start.b, start.a + start.b)));
+}
+
+Console.Write(Fibo(6, Enter()));
+
 // 74. В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
+
+
