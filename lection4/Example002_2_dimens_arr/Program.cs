@@ -477,6 +477,43 @@
 
 // 57. Написать программу упорядочивания по убыванию элементов каждой строки двумерного массива.
 
+(int m, int n) Len() // задать массив
+{
+    while (true)
+    {
+        Console.Write("Введите количество строк и столбцов массива через запятую: ");
+        string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
+        if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+        int.TryParse(enter[1], out int n)) return (m, n);
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+    }
+}
+
+int[,] RandArray((int m, int n) mn)
+{
+    int[,] array = new int[mn.m, mn.n];
+    for (int i = 0; i < mn.m; i++)
+    {
+        for (int j = 0; j < mn.n; j++)
+        {
+            array[i, j] = new Random().Next(1, 10);
+        }
+    }
+    return array;
+}
+
+void PrintArray(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            Console.Write(arr[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
 
 
 // 58. Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
