@@ -60,14 +60,22 @@
 // int SumNum(int num)
 // {
 //     if (num == 0) return 0;
-//     else return (num % 10) + SumNum(num / 10);
+//     return (num % 10) + SumNum(num / 10);
 // }
 
-// Console.Write(SumNum(4567));
+// Console.Write(SumNum(12345));
 
 // 71. Написать программу вычисления функции Аккермана
 
-// тут нужно быть математиком!!!!
+// int A(int m, int n)
+// {
+//     if (m == 0) return n += 1;
+//     if (m > 0 && n == 0) return A(m - 1, 1);
+//     if (m > 0 && n > 0) return A(m - 1, A(m, n - 1));
+//     else return 0;
+// }
+
+// Console.Write(A(2,2)); // == 7
 
 // 72. Написать программу возведения числа А в целую степень B
 
@@ -107,6 +115,36 @@
 // Console.Write(start.a + " " + start.b + " ");
 // Console.Write(Fibo(6, (start.a, start.b)));
 
-// 74. В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
+// 74. В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». 
+// Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
+
+int Enter()
+{
+    while (true)
+    {
+        Console.Write("Сколько букв будет в слове: ");
+        if (int.TryParse(Console.ReadLine(), out int b) && b > 0) return b;
+        else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
+    }
+}
+
+string[] alph = { "а", "и", "с", "в" };
+
+void Print(int n, string[] alph)
+{
+    for (int a = 0; a < alph.Length; a++)
+    {
+        for (int i = 0; i < alph.Length; i++)
+        {
+            for (int c = 0; c < alph.Length; c++)
+            {
+                string res = alph[a] + alph[i] + alph[c];
+                Console.Write(res + " ");
+            }
+        }
+    }
+}
+
+Print(Enter(), alph);
 
 
