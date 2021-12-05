@@ -482,7 +482,7 @@
 //     while (true)
 //     {
 //         Console.Write("Введите количество строк и столбцов массива через запятую: ");
-//         string[] enter = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
+//         string[] enter = Console.ReadLine().Split(new char[] {',', ' '}, StringSplitOptions.RemoveEmptyEntries);
 //         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
 //         int.TryParse(enter[1], out int n)) return (m, n);
 //         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
@@ -514,16 +514,102 @@
 //     }
 // }
 
+// int[,] Sorted(int[,] array)
+// {
+//     for (int i = 0; i < array.GetLength(0); i++)
+//     {
+//         int size = array.GetLength(1);
+//         while (size > 1)
+//         {
+//             int maxindex = 0;
+//             for (int j = 0; j < size; j++) if (array[i, j] > array[i, maxindex]) maxindex = j;
+//             int buffer = array[i, size - 1];
+//             array[i, size-- - 1] = array[i, maxindex];
+//             array[i, maxindex] = buffer;
+//         }
+//     }
+//     return array;
+// }
 
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.ReadLine();
+// PrintArray(Sorted(arr));
 
 // 58. Написать программу, которая в двумерном массиве заменяет строки на столбцы или сообщить
+
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n))
+//         {
+//             if (m == n) return (m, n);
+//             else Console.WriteLine("Мы сможем транспонировать только квадратную матрицу.");
+//         }
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int[,] Trans(int[,] arr)
+// {
+//     int[,] arr2 = new int[arr.GetLength(0), arr.GetLength(1)];
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             arr2[j, i] = arr[i, j];
+//         }
+//     }
+//     return arr2;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.ReadLine();
+// PrintArray(Trans(arr));
+
 // 59. В прямоугольной матрице найти строку с наименьшей суммой элементов.
+
+
+
 // 60. Составить частотный словарь элементов двумерного массива
 // 61. Найти произведение двух матриц
 // 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
 // 64. Показать треугольник Паскаля (на 20 строк)
 // *Сделать вывод в виде равнобедренного треугольника
+
+
+
 // 65. Спирально заполнить двумерный массив:
 // ```
 //   1  2  3  4
@@ -531,5 +617,5 @@
 //  11 16 15  6
 //  10  9  8  7 
 
-//  На рекурсию сложная, вначале блок-схему
-// создать алгоритм для игры в ханойские башни, который будет писать последовательность действий
+// 99. На рекурсию сложная, вначале блок-схему
+// создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
