@@ -599,9 +599,63 @@
 
 // 59. В прямоугольной матрице найти строку с наименьшей суммой элементов.
 
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int MinSumNumber(int[,] arr)
+// {
+//     int[] summArray = new int[arr.GetLength(0)];
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++) summArray[i] += arr[i, j];
+//     }
+//     int result = 0;
+//     for (int i = 1; i < arr.GetLength(0); i++) if (summArray[i] < summArray[result]) result = i;
+//     return result;
+// }
+
+// int[,] arr = RandArray(Len());
+// PrintArray(arr);
+// Console.WriteLine($"Строка с найменьшей суммой элементов: {(MinSumNumber(arr) + 1)}, если считать с единицы.");
 
 // 60. Составить частотный словарь элементов двумерного массива
+
+
+
 // 61. Найти произведение двух матриц
 // 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
