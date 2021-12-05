@@ -57,11 +57,7 @@
 
 // 70. Найти сумму цифр числа
 
-// int SumNum(int num)
-// {
-//     if (num == 0) return 0;
-//     return (num % 10) + SumNum(num / 10);
-// }
+// int SumNum(int n) => n < 10 ? n % 10 : n % 10 + SumNum(n / 10);
 
 // Console.Write(SumNum(12345));
 
@@ -85,7 +81,7 @@
 //     else return a * Pow(a, b - 1);
 // }
 
-// int Pow2(int a, int b) => (b == 1) ? a : a * Pow(a, b - 1);
+// int Pow2(int a, int b) => b == 1 ? a : a * Pow(a, b - 1);
 
 // Console.Write(Pow2(3, 3));
 
@@ -118,33 +114,49 @@
 // 74. В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». 
 // Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
 
-int Enter()
-{
-    while (true)
-    {
-        Console.Write("Сколько букв будет в слове: ");
-        if (int.TryParse(Console.ReadLine(), out int b) && b > 0) return b;
-        else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
-    }
-}
+// int Enter()
+// {
+//     while (true)
+//     {
+//         Console.Write("Сколько букв будет в слове: ");
+//         if (int.TryParse(Console.ReadLine(), out int b) && b > 0) return b;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
+//     }
+// }
 
-string[] alph = { "а", "и", "с", "в" };
+// string[] alph = { "а", "и", "с", "в" };
 
-void Print(int n, string[] alph)
-{
-    for (int a = 0; a < alph.Length; a++)
-    {
-        for (int i = 0; i < alph.Length; i++)
-        {
-            for (int c = 0; c < alph.Length; c++)
-            {
-                string res = alph[a] + alph[i] + alph[c];
-                Console.Write(res + " ");
-            }
-        }
-    }
-}
+// void Print(int n, string[] alph)
+// {
+//     for (int a = 0; a < alph.Length; a++)
+//     {
+//         for (int i = 0; i < alph.Length; i++)
+//         {
+//             for (int c = 0; c < alph.Length; c++)
+//             {
+//                 Console.Write(alph[a] + alph[i] + alph[c] + " ");
+//             }
+//         }
+//     }
+// }
 
-Print(Enter(), alph);
+// Print(Enter(), alph);
+
+
+// void WWW(string alph, char[] word, int len = 0)
+// {
+//     if (len == word.Length)
+//     {
+//         Console.Write($" {new String(word)}");
+//         return;
+//     }
+//     for (int i = 0; i < alph.Length; i++)
+//     {
+//         word[len] = alph[i];
+//         WWW(alph, word, len + 1);
+//     }
+// }
+
+// WWW("аисв", new char[2]);
 
 
