@@ -88,28 +88,23 @@
 // 73. Написать программу показывающие первые N чисел, для которых каждое следующее 
 // равно сумме двух предыдущих. Первые два элемента последовательности задаются пользователем
 
-// (int a, int b) Enter()
-// {
-//     while (true)
-//     {
-//         Console.Write("Введите первые два числа через запятую: ");
-//         string[] nums = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-//         if (nums.Length == 2 && int.TryParse(nums[0], out int a) && int.TryParse(nums[1], out int b) && (a < b)) return (a, b);
-//         else if (nums.Length == 2 && int.TryParse(nums[0], out int c) && int.TryParse(nums[1], out int d) && (c > d)) return (d, c);
-//         else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
-//     }
-// }
+(int a, int b) Enter()
+{
+    while (true)
+    {
+        Console.Write("Введите первые два числа через запятую: ");
+        string[] nums = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (nums.Length == 2 && int.TryParse(nums[0], out int a) && int.TryParse(nums[1], out int b) && b - a == 1) return (a, b);
+        else if (nums.Length == 2 && int.TryParse(nums[0], out int c) && int.TryParse(nums[1], out int d) && c - d == 1) return (d, c);
+        else Console.WriteLine("Что-то вы не то ввели, давайте заново.");
+    }
+}
 
-// string Fibo(int n, (int a, int b) start)
-// {
-//     if (n <= 1) return ($"{start.a + start.b}");
+string Fibo(int n, int a, int b) => n <= 1 ? $"{a + b}" : $"{a + b} {Fibo(n - 1, b, a + b)}";
 
-//     return ((start.a + start.b) + " " + Fibo(n - 1, (start.b, start.a + start.b)));
-// }
-
-// (int a, int b) start = Enter();
-// Console.Write(start.a + " " + start.b + " ");
-// Console.Write(Fibo(6, (start.a, start.b)));
+(int a, int b) start = Enter();
+Console.Write(start.a + " " + start.b + " ");
+Console.Write(Fibo(2, start.a, start.b));
 
 // 74. В некотором машинном алфавите имеются четыре буквы «а», «и», «с» и «в». 
 // Покажите все слова, состоящие из n букв, которые можно построить из букв этого алфавита
