@@ -659,10 +659,62 @@
 // 61. Найти произведение двух матриц
 // 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
-// 64. Показать треугольник Паскаля (на 20 строк)
+// 64. Показать треугольник Паскаля (на 15 и 20 строк)
 // *Сделать вывод в виде равнобедренного треугольника
 
+int Len() // задать высоту треугольника
+{
+    while (true)
+    {
+        Console.Write("Введите высоту треугольника Паскаля: ");
+        if (int.TryParse(Console.ReadLine(), out int n) && n > 4) return n;
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+    }
+}
 
+void PrintArray(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            // if (arr[i, j] == 0) Console.Write("  ");
+            Console.Write(arr[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+}
+
+int[,] PascalTriangle(int n)
+{
+    int[,] array = new int[n, 3 * n - 6]; // 3*n-6 высчитал эмпирически
+    int centralColumn = array.GetLength(1) / 2;
+    array[0, centralColumn] = 1; // вершина треугольника
+    for (int i = 1; i < array.GetLength(0); i++) // заполняем единицами контур
+    {
+        array[i, centralColumn + i] = 1;
+        array[i, centralColumn - i] = 1;
+    }
+
+    for (int i = 2; i < array.GetLength(0); i++) // заполняем со 2 ряда
+    {
+        if (i % 2 == 0) InnerCounter(array, i, centralColumn);
+    }
+    return array;
+}
+
+void InnerCounter(int[,] array, int rowNum, int centralColumn)
+{
+    int count = 0;
+    for (int i = rowNum; i < array.GetLength(0); i++) // заполняем со 2 ряда
+    {
+        array[i, centralColumn + count] = array[i - 1, centralColumn + count + 1] + array[i - 1, centralColumn + count - 1];
+        array[i, centralColumn - count] = array[i - 1, centralColumn - count + 1] + array[i - 1, centralColumn - count - 1];
+        count++;
+    }
+}
+
+PrintArray(PascalTriangle(7));
 
 // 65. Спирально заполнить двумерный массив:
 // ```
