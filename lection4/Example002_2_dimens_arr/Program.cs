@@ -678,8 +678,11 @@ void PrintArray(int[,] arr)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            // if (arr[i, j] == 0) Console.Write("  ");
-            Console.Write(arr[i, j] + " ");
+            if (arr[i, j] == 0) Console.Write(" ");
+            else if (arr[i, j] > 999) Console.Write(arr[i, j] + " ");
+            else if (arr[i, j] > 99) Console.Write(arr[i, j] + "  ");
+            else if (arr[i, j] > 9) Console.Write(arr[i, j] + "   ");
+            else if (arr[i, j] > 0) Console.Write(arr[i, j] + "    ");
         }
         Console.WriteLine();
     }
@@ -714,7 +717,7 @@ void InnerCounter(int[,] array, int rowNum, int centralColumn)
     }
 }
 
-PrintArray(PascalTriangle(7));
+PrintArray(PascalTriangle(Len()));
 
 // 65. Спирально заполнить двумерный массив:
 // ```
