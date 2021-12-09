@@ -721,15 +721,11 @@ int[,] FrequencyVocabulary(int[,] arr)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (CheckIfThereNumber(vocab, arr[i, j], out int n))
-            {
-                vocab[n, 1] += 1;
-            }
+            if (CheckIfThereNumber(vocab, arr[i, j], out int n)) vocab[n, 1] += 1;
             else
             {
                 vocab[vocabRow, 0] = arr[i, j];
-                vocab[vocabRow, 1] += 1;
-                vocabRow++;
+                vocab[vocabRow++, 1] += 1;
             }
         }
     }
