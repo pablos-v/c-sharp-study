@@ -650,26 +650,33 @@
 
 // int[,] arr = RandArray(Len());
 // PrintArray(arr);
-// Console.WriteLine($"Строка с найменьшей суммой элементов: {(MinSumNumber(arr) + 1)}, если считать с единицы.");
+// Console.WriteLine($"Строка с наименьшей суммой элементов: {(MinSumNumber(arr) + 1)}, если считать с единицы.");
 
 // 60. Составить частотный словарь элементов двумерного массива
 
-
-
-// 61. Найти произведение двух матриц
-// 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
-// 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
-// 64. Показать треугольник Паскаля (на 15 и 20 строк)
-// *Сделать вывод в виде равнобедренного треугольника
-
-int Len() // задать высоту треугольника
+(int m, int n) Lenth() // задать массив
 {
     while (true)
     {
-        Console.Write("Введите высоту треугольника Паскаля: ");
-        if (int.TryParse(Console.ReadLine(), out int n) && n > 4) return n;
+        Console.Write("Введите количество строк и столбцов массива через запятую: ");
+        string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+        int.TryParse(enter[1], out int n)) return (m, n);
         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
     }
+}
+
+int[,] RandArray((int m, int n) mn)
+{
+    int[,] array = new int[mn.m, mn.n];
+    for (int i = 0; i < mn.m; i++)
+    {
+        for (int j = 0; j < mn.n; j++)
+        {
+            array[i, j] = new Random().Next(1, 10);
+        }
+    }
+    return array;
 }
 
 void PrintArray(int[,] arr)
@@ -678,46 +685,123 @@ void PrintArray(int[,] arr)
     {
         for (int j = 0; j < arr.GetLength(1); j++)
         {
-            if (arr[i, j] == 0) Console.Write(" ");
-            else if (arr[i, j] > 999) Console.Write(arr[i, j] + " ");
-            else if (arr[i, j] > 99) Console.Write(arr[i, j] + "  ");
-            else if (arr[i, j] > 9) Console.Write(arr[i, j] + "   ");
-            else if (arr[i, j] > 0) Console.Write(arr[i, j] + "    ");
+            Console.Write(arr[i, j] + " ");
         }
         Console.WriteLine();
     }
 }
 
-int[,] PascalTriangle(int n)
+void PrintVocab(int[,] arr)
 {
-    int[,] array = new int[n, 3 * n - 6]; // 3*n-6 высчитал эмпирически
-    int centralColumn = array.GetLength(1) / 2;
-    array[0, centralColumn] = 1; // вершина треугольника
-    for (int i = 1; i < array.GetLength(0); i++) // заполняем единицами контур
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        array[i, centralColumn + i] = 1;
-        array[i, centralColumn - i] = 1;
-    }
-
-    for (int i = 2; i < array.GetLength(0); i++) // заполняем со 2 ряда
-    {
-        if (i % 2 == 0) InnerCounter(array, i, centralColumn);
-    }
-    return array;
-}
-
-void InnerCounter(int[,] array, int rowNum, int centralColumn)
-{
-    int count = 0;
-    for (int i = rowNum; i < array.GetLength(0); i++) // заполняем со 2 ряда
-    {
-        array[i, centralColumn + count] = array[i - 1, centralColumn + count + 1] + array[i - 1, centralColumn + count - 1];
-        array[i, centralColumn - count] = array[i - 1, centralColumn - count + 1] + array[i - 1, centralColumn - count - 1];
-        count++;
+        if (arr[i, 0] != 0) Console.WriteLine($"Число {arr[i, 0]} встречается {arr[i, 1]} раз.");
     }
 }
 
-PrintArray(PascalTriangle(Len()));
+bool CheckIfThereNumber(int[,] arr, int m, out int n)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        if (arr[i, 0] == m)
+        {
+            n = i;
+            return true;
+        }
+    }
+    n = 0;
+    return false;
+}
+
+int[,] FrequencyVocabulary(int[,] arr)
+{
+    int[,] vocab = new int[arr.Length, 2];
+    int vocabRow = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if (CheckIfThereNumber(vocab, arr[i, j], out int n))
+            {
+                vocab[n, 1] += 1;
+            }
+            else
+            {
+                vocab[vocabRow, 0] = arr[i, j];
+                vocab[vocabRow, 1] += 1;
+                vocabRow++;
+            }
+        }
+    }
+    return vocab;
+}
+
+int[,] array = RandArray(Lenth());
+PrintArray(array);
+PrintVocab(FrequencyVocabulary(array));
+
+// 61. Найти произведение двух матриц
+// 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
+// 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
+// 64. Показать треугольник Паскаля (на 15 и 20 строк)
+// *Сделать вывод в виде равнобедренного треугольника
+
+// int Len() // задать высоту треугольника
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите высоту треугольника Паскаля: ");
+//         if (int.TryParse(Console.ReadLine(), out int n) && n > 4) return n;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (arr[i, j] == 0) Console.Write(" ");
+//             else if (arr[i, j] > 999) Console.Write(arr[i, j] + " ");
+//             else if (arr[i, j] > 99) Console.Write(arr[i, j] + "  ");
+//             else if (arr[i, j] > 9) Console.Write(arr[i, j] + "   ");
+//             else if (arr[i, j] > 0) Console.Write(arr[i, j] + "    ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int[,] PascalTriangle(int n)
+// {
+//     int[,] array = new int[n, 3 * n - 6]; // 3*n-6 высчитал эмпирически
+//     int centralColumn = array.GetLength(1) / 2;
+//     array[0, centralColumn] = 1; // вершина треугольника
+//     for (int i = 1; i < array.GetLength(0); i++) // заполняем единицами контур
+//     {
+//         array[i, centralColumn + i] = 1;
+//         array[i, centralColumn - i] = 1;
+//     }
+
+//     for (int i = 2; i < array.GetLength(0); i++) // заполняем со 2 ряда
+//     {
+//         if (i % 2 == 0) InnerCounter(array, i, centralColumn);
+//     }
+//     return array;
+// }
+
+// void InnerCounter(int[,] array, int rowNum, int centralColumn)
+// {
+//     int count = 0;
+//     for (int i = rowNum; i < array.GetLength(0); i++) // заполняем со 2 ряда
+//     {
+//         array[i, centralColumn + count] = array[i - 1, centralColumn + count + 1] + array[i - 1, centralColumn + count - 1];
+//         array[i, centralColumn - count] = array[i - 1, centralColumn - count + 1] + array[i - 1, centralColumn - count - 1];
+//         count++;
+//     }
+// }
+
+// PrintArray(PascalTriangle(Len()));
 
 // 65. Спирально заполнить двумерный массив:
 // ```
