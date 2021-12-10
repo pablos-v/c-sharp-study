@@ -877,19 +877,19 @@ int[,] NewArrayCorrected(int[,] arr, (int a, int b) index)
         {
             if (j == index.b) continue;
 
-            newArray[row, column] = arr[i, j];
-            column += 1;
+            newArray[row, column++] = arr[i, j];
         }
-        row += 1;
+        row++;
         column = 0;
     }
     return newArray;
 }
+
 int[,] array = RandArray(Len());
+Console.WriteLine("Задан массив: ");
 PrintArray(array);
-(int a, int b) qwer = MinIndex(array);
-Console.WriteLine(qwer.a + " " + qwer.b);
-PrintArray(NewArrayCorrected(array, (qwer.a, qwer.b)));
+Console.WriteLine("Массив с исключёнными строкой и столбцом минимального значения: ");
+PrintArray(NewArrayCorrected(array, MinIndex(array)));
 
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
 // 64. Показать треугольник Паскаля (на 15 и 20 строк)
