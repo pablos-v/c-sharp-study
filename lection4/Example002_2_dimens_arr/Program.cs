@@ -654,11 +654,95 @@
 
 // 60. Составить частотный словарь элементов двумерного массива
 
-(int m, int n) Lenth() // задать массив
+// (int m, int n) Lenth() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// void PrintVocab(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         if (arr[i, 0] != 0) Console.WriteLine($"Число {arr[i, 0]} встречается {arr[i, 1]} раз.");
+//     }
+// }
+
+// bool CheckIfThereNumber(int[,] arr, int m, out int n)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         if (arr[i, 0] == m)
+//         {
+//             n = i;
+//             return true;
+//         }
+//     }
+//     n = 0;
+//     return false;
+// }
+
+// int[,] FrequencyVocabulary(int[,] arr)
+// {
+//     int[,] vocab = new int[arr.Length, 2];
+//     int vocabRow = 0;
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (CheckIfThereNumber(vocab, arr[i, j], out int n)) vocab[n, 1] += 1;
+//             else
+//             {
+//                 vocab[vocabRow, 0] = arr[i, j];
+//                 vocab[vocabRow++, 1] += 1;
+//             }
+//         }
+//     }
+//     return vocab;
+// }
+
+// int[,] array = RandArray(Lenth());
+// PrintArray(array);
+// PrintVocab(FrequencyVocabulary(array));
+
+// 61. Найти произведение двух матриц
+
+(int m, int n) Len(int num) // задать массив
 {
     while (true)
     {
-        Console.Write("Введите количество строк и столбцов массива через запятую: ");
+        Console.Write($"Введите количество строк и столбцов {num} матрицы через запятую: ");
         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
         int.TryParse(enter[1], out int n)) return (m, n);
@@ -691,52 +775,40 @@ void PrintArray(int[,] arr)
     }
 }
 
-void PrintVocab(int[,] arr)
+int[,] MultiplyMatrix(int[,] A, int[,] B)
 {
-    for (int i = 0; i < arr.GetLength(0); i++)
+    int[,] result = new int[A.GetLength(0), B.GetLength(1)];
+    for (int i = 0; i < A.GetLength(0); i++)
     {
-        if (arr[i, 0] != 0) Console.WriteLine($"Число {arr[i, 0]} встречается {arr[i, 1]} раз.");
-    }
-}
-
-bool CheckIfThereNumber(int[,] arr, int m, out int n)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        if (arr[i, 0] == m)
+        for (int f = 0; f < A.GetLength(0); f++)
         {
-            n = i;
-            return true;
-        }
-    }
-    n = 0;
-    return false;
-}
-
-int[,] FrequencyVocabulary(int[,] arr)
-{
-    int[,] vocab = new int[arr.Length, 2];
-    int vocabRow = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (CheckIfThereNumber(vocab, arr[i, j], out int n)) vocab[n, 1] += 1;
-            else
+            for (int j = 0; j < B.GetLength(0); j++)
             {
-                vocab[vocabRow, 0] = arr[i, j];
-                vocab[vocabRow++, 1] += 1;
+                result[i, f] += A[i, j] * B[j, f];
             }
         }
     }
-    return vocab;
+    return result;
 }
 
-int[,] array = RandArray(Lenth());
-PrintArray(array);
-PrintVocab(FrequencyVocabulary(array));
+(int[,] A, int[,] B) CreateMatrices()
+{
+    while (true)
+    {
+        int[,] arrayA = RandArray(Len(1));
+        int[,] arrayB = RandArray(Len(2));
+        if (arrayA.GetLength(0) == arrayB.GetLength(1) || arrayA.GetLength(1) == arrayB.GetLength(0)) return (arrayA, arrayB);
+        Console.WriteLine("Матрицы A и B могут быть перемножены, если они совместимы в том смысле, что число столбцов матрицы A равно числу строк B.");
+    }
+}
 
-// 61. Найти произведение двух матриц
+(int[,] A, int[,] B) matrices = CreateMatrices();
+PrintArray(matrices.A);
+Console.WriteLine("-----");
+PrintArray(matrices.B);
+Console.WriteLine("---Результат умножения матриц: ---");
+PrintArray(MultiplyMatrix(matrices.A, matrices.B));
+
 // 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
 // 64. Показать треугольник Паскаля (на 15 и 20 строк)
