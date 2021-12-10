@@ -738,11 +738,84 @@
 
 // 61. Найти произведение двух матриц
 
-(int m, int n) Len(int num) // задать массив
+// (int m, int n) Len(int num) // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write($"Введите количество строк и столбцов {num} матрицы через запятую: ");
+//         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// int[,] MultiplyMatrix(int[,] A, int[,] B)
+// {
+//     int[,] result = new int[A.GetLength(0), B.GetLength(1)];
+//     for (int i = 0; i < A.GetLength(0); i++)
+//     {
+//         for (int f = 0; f < A.GetLength(0); f++)
+//         {
+//             for (int j = 0; j < B.GetLength(0); j++)
+//             {
+//                 result[i, f] += A[i, j] * B[j, f];
+//             }
+//         }
+//     }
+//     return result;
+// }
+
+// (int[,] A, int[,] B) CreateMatrices()
+// {
+//     while (true)
+//     {
+//         int[,] arrayA = RandArray(Len(1));
+//         int[,] arrayB = RandArray(Len(2));
+//         if (arrayA.GetLength(0) == arrayB.GetLength(1) || arrayA.GetLength(1) == arrayB.GetLength(0)) return (arrayA, arrayB);
+//         Console.WriteLine("Матрицы A и B могут быть перемножены, если они совместимы в том смысле, что число столбцов матрицы A равно числу строк B.");
+//     }
+// }
+
+// (int[,] A, int[,] B) matrices = CreateMatrices();
+// PrintArray(matrices.A);
+// Console.WriteLine("-----");
+// PrintArray(matrices.B);
+// Console.WriteLine("---Результат умножения матриц: ---");
+// PrintArray(MultiplyMatrix(matrices.A, matrices.B));
+
+// 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
+
+(int m, int n) Len() // задать массив
 {
     while (true)
     {
-        Console.Write($"Введите количество строк и столбцов {num} матрицы через запятую: ");
+        Console.Write("Введите количество строк и столбцов массива через запятую: ");
         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
         int.TryParse(enter[1], out int n)) return (m, n);
@@ -775,41 +848,49 @@ void PrintArray(int[,] arr)
     }
 }
 
-int[,] MultiplyMatrix(int[,] A, int[,] B)
+(int row, int column) MinIndex(int[,] arr)
 {
-    int[,] result = new int[A.GetLength(0), B.GetLength(1)];
-    for (int i = 0; i < A.GetLength(0); i++)
+    int a = 0, b = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for (int f = 0; f < A.GetLength(0); f++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            for (int j = 0; j < B.GetLength(0); j++)
+            if (arr[i, j] < arr[a, b])
             {
-                result[i, f] += A[i, j] * B[j, f];
+                a = i;
+                b = j;
             }
         }
     }
-    return result;
+    return (a, b);
 }
 
-(int[,] A, int[,] B) CreateMatrices()
+int[,] NewArrayCorrected(int[,] arr, (int a, int b) index)
 {
-    while (true)
+    int[,] newArray = new int[arr.GetLength(0) - 1, arr.GetLength(1) - 1];
+    int row = 0, column = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        int[,] arrayA = RandArray(Len(1));
-        int[,] arrayB = RandArray(Len(2));
-        if (arrayA.GetLength(0) == arrayB.GetLength(1) || arrayA.GetLength(1) == arrayB.GetLength(0)) return (arrayA, arrayB);
-        Console.WriteLine("Матрицы A и B могут быть перемножены, если они совместимы в том смысле, что число столбцов матрицы A равно числу строк B.");
+        if (i == index.a) continue;
+
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if (j == index.b) continue;
+
+            newArray[row, column] = arr[i, j];
+            column += 1;
+        }
+        row += 1;
+        column = 0;
     }
+    return newArray;
 }
+int[,] array = RandArray(Len());
+PrintArray(array);
+(int a, int b) qwer = MinIndex(array);
+Console.WriteLine(qwer.a + " " + qwer.b);
+PrintArray(NewArrayCorrected(array, (qwer.a, qwer.b)));
 
-(int[,] A, int[,] B) matrices = CreateMatrices();
-PrintArray(matrices.A);
-Console.WriteLine("-----");
-PrintArray(matrices.B);
-Console.WriteLine("---Результат умножения матриц: ---");
-PrintArray(MultiplyMatrix(matrices.A, matrices.B));
-
-// 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
 // 64. Показать треугольник Паскаля (на 15 и 20 строк)
 // *Сделать вывод в виде равнобедренного треугольника
