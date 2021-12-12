@@ -811,87 +811,90 @@
 
 // 62. В двумерном массиве целых чисел. Удалить строку и столбец, на пересечении которых расположен наименьший элемент.
 
-(int m, int n) Len() // задать массив
-{
-    while (true)
-    {
-        Console.Write("Введите количество строк и столбцов массива через запятую: ");
-        string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-        if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
-        int.TryParse(enter[1], out int n)) return (m, n);
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
-    }
-}
+// (int m, int n) Len() // задать массив
+// {
+//     while (true)
+//     {
+//         Console.Write("Введите количество строк и столбцов массива через запятую: ");
+//         string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+//         if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+//         int.TryParse(enter[1], out int n)) return (m, n);
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
 
-int[,] RandArray((int m, int n) mn)
-{
-    int[,] array = new int[mn.m, mn.n];
-    for (int i = 0; i < mn.m; i++)
-    {
-        for (int j = 0; j < mn.n; j++)
-        {
-            array[i, j] = new Random().Next(1, 10);
-        }
-    }
-    return array;
-}
+// int[,] RandArray((int m, int n) mn)
+// {
+//     int[,] array = new int[mn.m, mn.n];
+//     for (int i = 0; i < mn.m; i++)
+//     {
+//         for (int j = 0; j < mn.n; j++)
+//         {
+//             array[i, j] = new Random().Next(1, 10);
+//         }
+//     }
+//     return array;
+// }
 
-void PrintArray(int[,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            Console.Write(arr[i, j] + " ");
-        }
-        Console.WriteLine();
-    }
-}
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             Console.Write(arr[i, j] + " ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
 
-(int row, int column) MinIndex(int[,] arr)
-{
-    int a = 0, b = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (arr[i, j] < arr[a, b])
-            {
-                a = i;
-                b = j;
-            }
-        }
-    }
-    return (a, b);
-}
+// (int row, int column) MinIndex(int[,] arr)
+// {
+//     int a = 0, b = 0;
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (arr[i, j] < arr[a, b])
+//             {
+//                 a = i;
+//                 b = j;
+//             }
+//         }
+//     }
+//     return (a, b);
+// }
 
-int[,] NewArrayCorrected(int[,] arr, (int a, int b) index)
-{
-    int[,] newArray = new int[arr.GetLength(0) - 1, arr.GetLength(1) - 1];
-    int row = 0, column = 0;
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        if (i == index.a) continue;
+// int[,] NewArrayCorrected(int[,] arr, (int a, int b) index)
+// {
+//     int[,] newArray = new int[arr.GetLength(0) - 1, arr.GetLength(1) - 1];
+//     int row = 0, column = 0;
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         if (i == index.a) continue;
 
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (j == index.b) continue;
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (j == index.b) continue;
 
-            newArray[row, column++] = arr[i, j];
-        }
-        row++;
-        column = 0;
-    }
-    return newArray;
-}
+//             newArray[row, column++] = arr[i, j];
+//         }
+//         row++;
+//         column = 0;
+//     }
+//     return newArray;
+// }
 
-int[,] array = RandArray(Len());
-Console.WriteLine("Задан массив: ");
-PrintArray(array);
-Console.WriteLine("Массив с исключёнными строкой и столбцом минимального значения: ");
-PrintArray(NewArrayCorrected(array, MinIndex(array)));
+// int[,] array = RandArray(Len());
+// Console.WriteLine("Задан массив: ");
+// PrintArray(array);
+// Console.WriteLine("Массив с исключёнными строкой и столбцом минимального значения: ");
+// PrintArray(NewArrayCorrected(array, MinIndex(array)));
 
 // 63. Сформировать трехмерный массив не повторяющимися двузначными числами показать его построчно на экран выводя индексы соответствующего элемента
+
+
+
 // 64. Показать треугольник Паскаля (на 15 и 20 строк)
 // *Сделать вывод в виде равнобедренного треугольника
 
@@ -958,6 +961,81 @@ PrintArray(NewArrayCorrected(array, MinIndex(array)));
 //  12 13 14  5
 //  11 16 15  6
 //  10  9  8  7 
+
+(int m, int n) Len() // задать массив
+{
+    while (true)
+    {
+        Console.Write("Введите количество строк и столбцов массива через запятую: ");
+        string[] enter = Console.ReadLine().Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+        if (enter.Length == 2 && int.TryParse(enter[0], out int m) &&
+        int.TryParse(enter[1], out int n)) return (m, n);
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+    }
+}
+
+int[,] SpiralArray((int m, int n) mn)
+{
+    int[,] array = new int[mn.m, mn.n];
+    int num = 1;
+    for (int v = 0; v < array.GetLength(1); v++) array[0, v] = num++;// vpravo
+    for (int s = 1; s < array.GetLength(0) - 1; s++) array[s, array.GetLength(1) - 1] = num++;//vniz
+    for (int k = array.GetLength(1) - 1; k > 0; k--) array[array.GetLength(0) - 1, k] = num++;//vlevo
+    for (int f = array.GetLength(0) - 1; f > 0; f--) array[f, 0] = num++;//vverx, kvadrat sdelan
+
+// for (int q = 0; q < array.GetLength(0); q++)
+// {
+//     if (array[q,q]==0)
+//     {
+
+//     }
+// }
+
+    // int i = 1, j = 1;
+    // array[i, j] = num++;
+    // while (num != array.Length + 1)
+    // {
+    //     if (array[i - 1, j] == 0) // naverh
+    //     {
+    //         array[i - 1, j] = num++;
+    //         i--;
+    //     }
+
+    //     else if (array[i, j + 1] == 0) // sprava
+    //     {
+    //         array[i, j + 1] = num++;
+    //         j++;
+    //     }
+    //     else if (array[i + 1, j] == 0) // vniz
+    //     {
+    //         array[i + 1, j] = num++;
+    //         i++;
+    //     }
+    //     else if (array[i, j - 1] == 0) // vlevo
+    //     {
+    //         array[i, j - 1] = num++;
+    //         j--;
+    //     }
+    // }
+    return array;
+}
+
+void PrintArray(int[,] arr)
+{
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            if (arr[i, j] > 9) Console.Write(arr[i, j] + " ");
+            else Console.Write(arr[i, j] + "  ");
+        }
+        Console.WriteLine();
+    }
+}
+
+
+PrintArray(SpiralArray(Len()));
+
 
 // 99. На рекурсию сложная, вначале блок-схему
 // создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
