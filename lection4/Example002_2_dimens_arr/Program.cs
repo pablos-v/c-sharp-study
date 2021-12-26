@@ -963,47 +963,78 @@
 //  10  9  8  7 
 // КВАДРАТНАЯ, НУЖНА БЫЛА ПРОСТО КВАДРАТНАЯ МАТРИЦА!
 
-int Len() // задать матрицу
+// int Len() // задать матрицу
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Укажите размер матрицы: ");
+//         if (int.TryParse(Console.ReadLine(), out int n) && n > 0) return n;
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int[,] SpiralArray(int m)
+// {
+//     int[,] array = new int[m, m];
+//     int num = 1;
+//     for (int q = 0; q < m / 2 + 1; q++)
+//     {
+//         if (array[q, q] == 0)
+//         {
+//             for (int s = 0 + q; s < m - q; s++) array[0 + q, s] = num++;// vpravo
+//             for (int s = 1 + q; s < m - 1 - q; s++) array[s, m - 1 - q] = num++;//vniz
+//             for (int s = m - 1 - q; s > 0 + q; s--) array[m - 1 - q, s] = num++;//vlevo
+//             for (int s = m - 1 - q; s > 0 + q; s--) array[s, 0 + q] = num++;//vverx, kvadrat sdelan
+//         }
+//     }
+//     return array;
+// }
+
+// void PrintArray(int[,] arr)
+// {
+//     for (int i = 0; i < arr.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < arr.GetLength(1); j++)
+//         {
+//             if (arr[i, j] > 9) Console.Write(arr[i, j] + " ");
+//             else Console.Write(arr[i, j] + "  ");
+//         }
+//         Console.WriteLine();
+//     }
+// }
+
+// PrintArray(SpiralArray(Len()));
+
+// 99. На рекурсию сложная, вначале блок-схему
+// создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
+
+// 100. Дано число. В нем находятся только неповторяющиеся цифры. Например, 573486
+// С клавиатуры ввести 2 цифры из этого числа и найти сумму цифр между ними.
+
+(int, int) EnterNum(string phrase, int length)
 {
     while (true)
     {
-        Console.WriteLine("Укажите размер матрицы: ");
-        if (int.TryParse(Console.ReadLine(), out int n) && n > 0) return n;
+        Console.Write(phrase);
+        phrase = Console.ReadLine(); // переменная уже не нужна, можно переиспользовать
+        if (int.TryParse(phrase, out int num) && phrase.Length == length) return (num, length);
+        
         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
     }
 }
 
-int[,] SpiralArray(int m)
+int SumOfNumbers((int number, int length) enter)
 {
-    int[,] array = new int[m, m];
-    int num = 1;
-    for (int q = 0; q < m / 2 + 1; q++)
+    int[] array = new int[enter.length];
+    int sum = enter.number;
+    for (int i = enter.length - 1; i > 0; i--)
     {
-        if (array[q, q] == 0)
-        {
-            for (int s = 0 + q; s < m - q; s++) array[0 + q, s] = num++;// vpravo
-            for (int s = 1 + q; s < m - 1 - q; s++) array[s, m - 1 - q] = num++;//vniz
-            for (int s = m - 1 - q; s > 0 + q; s--) array[m - 1 - q, s] = num++;//vlevo
-            for (int s = m - 1 - q; s > 0 + q; s--) array[s, 0 + q] = num++;//vverx, kvadrat sdelan
-        }
+        array[i] = sum % 10;
+        sum = sum / 10;
     }
-    return array;
+    EnterNum("Укажите одним числом 2 цифры из заданного ранее числа: ", 2);
+    return sum;
 }
 
-void PrintArray(int[,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
-    {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            if (arr[i, j] > 9) Console.Write(arr[i, j] + " ");
-            else Console.Write(arr[i, j] + "  ");
-        }
-        Console.WriteLine();
-    }
-}
+Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(EnterNum("Задайте начальное 5-значное число", 5)));
 
-PrintArray(SpiralArray(Len()));
-
-// 99. На рекурсию сложная, вначале блок-схему
-// создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
