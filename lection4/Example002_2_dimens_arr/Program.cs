@@ -1011,29 +1011,55 @@
 // 100. Дано число. В нем находятся только неповторяющиеся цифры. Например, 573486
 // С клавиатуры ввести 2 цифры из этого числа и найти сумму цифр между ними.
 
-(int, int) EnterNum(string phrase, int length)
+int[] EnterNum(string phrase, int length)
 {
     while (true)
     {
-        Console.Write(phrase);
+        Console.WriteLine(phrase);
         phrase = Console.ReadLine(); // переменная уже не нужна, можно переиспользовать
-        if (int.TryParse(phrase, out int num) && phrase.Length == length) return (num, length);
-        
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+        if (int.TryParse(phrase, out int num) && phrase.Length == length)
+        {
+            int[] array = new int[length];
+            for (int i = length - 1; i > 0; i--)
+            {
+                array[i] = num % 10;
+                num /= 10;
+            }
+            num = array[0];
+            int count = 0;
+            for (int i = 1; i < length; i++) // проверка на повтор
+            {
+                if (num == array[i]) count = 1;
+                else num = array[i];
+            }
+            if (count != 1) return array;
+            else Console.WriteLine("Цифры не должны повторяться!");
+        }
+        else Console.WriteLine("Что-то вы не то ввели, давайте снова.");
     }
 }
 
-int SumOfNumbers((int number, int length) enter)
+int SumOfNumbers(int[] array)
 {
-    int[] array = new int[enter.length];
-    int sum = enter.number;
-    for (int i = enter.length - 1; i > 0; i--)
+    while (true)
     {
-        array[i] = sum % 10;
-        sum = sum / 10;
+        int[] arr = EnterNum("Укажите одним числом 2 цифры из заданного ранее числа: ", 2);
+        int count = 0;
+        int rezult = 0;
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == arr[0]) { arr[0] = i; count++; }
+            if (array[i] == arr[1]) { arr[1] = i; count++; }
+        }
+        int min = arr[0], max = arr[1];
+        if (arr[0] > arr[1]) { max = arr[0]; min = arr[1]; }
+        for (int k = min; k < max; k++)
+        {
+            rezult += array[k];
+        }
+        if (count == 2) return rezult;
+        else Console.WriteLine("Эти 2 цифры должны содержаться в заданном числе, давайте снова.");
     }
-    EnterNum("Укажите одним числом 2 цифры из заданного ранее числа: ", 2);
-    return sum;
 }
 
 Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(EnterNum("Задайте начальное 5-значное число", 5)));
