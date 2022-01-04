@@ -1008,59 +1008,67 @@
 // 99. На рекурсию сложная, вначале блок-схему
 // создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
 
+//101. Пример заключался в следующем: 
+//  Написав на доске все числа от 1 до N, N = 50, преподаватель разделил числа на несколько групп 
+//  так, что если одно число делится на другое, то эти числа попадают в разные руппы. 
+//  В результате этого разбиения получилось M групп, для N = 50, M = 6 
+//  N = 50 
+//  Группы получились такими: 
+
+//  Группа 1: 1 
+//  Группа 2: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
+//  Группа 3: 4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 
+//  Группа 4: 8 12 18 20 27 28 30 42 44 45 50 
+//  Группа 5: 16 24 36 40 
+//  Группа 6: 32 48
+
+// Задача: найти M при заданном N.
+// И получить разбиение на группы
+
 // 100. Дано число. В нем находятся только неповторяющиеся цифры. Например, 573486
 // С клавиатуры ввести 2 цифры из этого числа и найти сумму цифр между ними.
 
-int[] EnterNum(string phrase, int length)
+(int a, int b) EnterNum(int[] array)
 {
     while (true)
     {
-        Console.WriteLine(phrase);
-        phrase = Console.ReadLine(); // переменная уже не нужна, можно переиспользовать
-        if (int.TryParse(phrase, out int num) && phrase.Length == length)
+        Console.WriteLine("Укажите через запятую 2 цыфры из заданного числа.");
+        string[] phrase = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
+        if (phrase.Length == 2 && int.TryParse(phrase[0], out int m) &&
+                int.TryParse(phrase[1], out int n))
         {
-            int[] array = new int[length];
-            for (int i = length - 1; i > 0; i--)
-            {
-                array[i] = num % 10;
-                num /= 10;
-            }
-            num = array[0];
             int count = 0;
-            for (int i = 1; i < length; i++) // проверка на повтор
-            {
-                if (num == array[i]) count = 1;
-                else num = array[i];
-            }
-            if (count != 1) return array;
-            else Console.WriteLine("Цифры не должны повторяться!");
+            for (int i = 0; i < array.Length; i++) if (array[i] == m || array[i] == n) count++;
+            if (count == 2) return (m, n);
+            else Console.WriteLine("Обе цифры должны быть из заданного числа.");
         }
-        else Console.WriteLine("Что-то вы не то ввели, давайте снова.");
+        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
     }
 }
 
 int SumOfNumbers(int[] array)
 {
-    while (true)
+    (int a, int b) num = EnterNum(array);
+    int rezult = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        int[] arr = EnterNum("Укажите одним числом 2 цифры из заданного ранее числа: ", 2);
-        int count = 0;
-        int rezult = 0;
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i] == arr[0]) { arr[0] = i; count++; }
-            if (array[i] == arr[1]) { arr[1] = i; count++; }
-        }
-        int min = arr[0], max = arr[1];
-        if (arr[0] > arr[1]) { max = arr[0]; min = arr[1]; }
-        for (int k = min; k < max; k++)
-        {
-            rezult += array[k];
-        }
-        if (count == 2) return rezult;
-        else Console.WriteLine("Эти 2 цифры должны содержаться в заданном числе, давайте снова.");
+        if (array[i] == num.a) num.a = i;
+        if (array[i] == num.b) num.b = i;
     }
+    int min = num.a, max = num.b;
+    if (num.a > num.b) { max = num.a; min = num.b; }
+    for (int k = min + 1; k < max; k++) rezult += array[k];
+    return rezult;
 }
 
-Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(EnterNum("Задайте начальное 5-значное число", 5)));
+int[] NumToArray(string a)
+{
+    int[] digits = new int[a.Length];
+    for (int i = 0; i < a.Length; i++) digits[i] = Convert.ToInt32(Char.GetNumericValue(a[i]));
+    return digits;
+}
+
+string given = "573486";
+Console.WriteLine("Дано число " + given);
+Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(NumToArray(given)));
 
