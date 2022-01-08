@@ -1005,14 +1005,57 @@
 
 // PrintArray(SpiralArray(Len()));
 
-// 99. На рекурсию сложная, вначале блок-схему
-// создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
+// 100. Дано число. В нем находятся только неповторяющиеся цифры. Например, 573486
+// С клавиатуры ввести 2 цифры из этого числа и найти сумму цифр между ними.
+
+// (int a, int b) EnterNum(int[] array)
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Укажите через запятую 2 цыфры из заданного числа.");
+//         string[] phrase = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
+//         if (phrase.Length == 2 && int.TryParse(phrase[0], out int m) &&
+//                 int.TryParse(phrase[1], out int n))
+//         {
+//             int count = 0;
+//             for (int i = 0; i < array.Length; i++) if (array[i] == m || array[i] == n) count++;
+//             if (count == 2) return (m, n);
+//             else Console.WriteLine("Обе цифры должны быть из заданного числа.");
+//         }
+//         else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+//     }
+// }
+
+// int SumOfNumbers(int[] array)
+// {
+//     (int a, int b) num = EnterNum(array);
+//     int rezult = 0;
+//     for (int i = 0; i < array.Length; i++)
+//     {
+//         if (array[i] == num.a) num.a = i;
+//         if (array[i] == num.b) num.b = i;
+//     }
+//     int min = num.a, max = num.b;
+//     if (num.a > num.b) { max = num.a; min = num.b; }
+//     for (int k = min + 1; k < max; k++) rezult += array[k];
+//     return rezult;
+// }
+
+// int[] NumToArray(string a)
+// {
+//     int[] digits = new int[a.Length];
+//     for (int i = 0; i < a.Length; i++) digits[i] = Convert.ToInt32(Char.GetNumericValue(a[i]));
+//     return digits;
+// }
+
+// string given = "573486";
+// Console.WriteLine("Дано число " + given);
+// Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(NumToArray(given)));
 
 //101. Пример заключался в следующем: 
 //  Написав на доске все числа от 1 до N, N = 50, преподаватель разделил числа на несколько групп 
 //  так, что если одно число делится на другое, то эти числа попадают в разные руппы. 
 //  В результате этого разбиения получилось M групп, для N = 50, M = 6 
-//  N = 50 
 //  Группы получились такими: 
 
 //  Группа 1: 1 
@@ -1025,50 +1068,36 @@
 // Задача: найти M при заданном N.
 // И получить разбиение на группы
 
-// 100. Дано число. В нем находятся только неповторяющиеся цифры. Например, 573486
-// С клавиатуры ввести 2 цифры из этого числа и найти сумму цифр между ними.
-
-(int a, int b) EnterNum(int[] array)
+int[][] GroupSorting(int n, int m)
 {
-    while (true)
+    if (n == 0) return Array.Empty<int[]>();
+    else
     {
-        Console.WriteLine("Укажите через запятую 2 цыфры из заданного числа.");
-        string[] phrase = Console.ReadLine().Split(',', ' ', StringSplitOptions.RemoveEmptyEntries);
-        if (phrase.Length == 2 && int.TryParse(phrase[0], out int m) &&
-                int.TryParse(phrase[1], out int n))
+        int[][] array = new int[m][];
+        array[0] = new int[] { 1 };
+        int a = 2;
+        int b = a * 2;
+        for (int f = 1; f < m; f++)
         {
-            int count = 0;
-            for (int i = 0; i < array.Length; i++) if (array[i] == m || array[i] == n) count++;
-            if (count == 2) return (m, n);
-            else Console.WriteLine("Обе цифры должны быть из заданного числа.");
+            if (b < n)
+            {
+                array[f] = new int[b - a];
+                for (int i = 0; i < array[f].Length; i++) array[f][i] = a++;
+            }
+            else
+            {
+                array[f] = new int[n - b / 2 + 1];
+                for (int i = 0; i <= (n - b / 2); i++) array[f][i] = a++;
+            }
+            b *= 2;
         }
-        else Console.WriteLine("Что-то вы не то ввели, давайте-ка снова.");
+        return array;
     }
 }
 
-int SumOfNumbers(int[] array)
-{
-    (int a, int b) num = EnterNum(array);
-    int rezult = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (array[i] == num.a) num.a = i;
-        if (array[i] == num.b) num.b = i;
-    }
-    int min = num.a, max = num.b;
-    if (num.a > num.b) { max = num.a; min = num.b; }
-    for (int k = min + 1; k < max; k++) rezult += array[k];
-    return rezult;
-}
+int n = 50;
+int m = (int)Math.Log(n, 2) + 1;
+Console.WriteLine("{\r\n" + string.Join("\r\n", GroupSorting(n, m).Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
 
-int[] NumToArray(string a)
-{
-    int[] digits = new int[a.Length];
-    for (int i = 0; i < a.Length; i++) digits[i] = Convert.ToInt32(Char.GetNumericValue(a[i]));
-    return digits;
-}
-
-string given = "573486";
-Console.WriteLine("Дано число " + given);
-Console.WriteLine("Сумма цифр между двух заданных равна " + SumOfNumbers(NumToArray(given)));
-
+// 99. На рекурсию сложная, вначале блок-схему
+// создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
