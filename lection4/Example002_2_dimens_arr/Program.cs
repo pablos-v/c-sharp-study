@@ -1095,9 +1095,30 @@ int[][] GroupSorting(int n, int m)
     }
 }
 
-int n = 50;
-int m = (int)Math.Log(n, 2) + 1;
-Console.WriteLine("{\r\n" + string.Join("\r\n", GroupSorting(n, m).Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
+bool UnitTest(int[][] arr)
+{
+    for (int j = 0; j < arr.Length; j++)
+    {
+        for (int k = arr[j].Length - 1; k >= 0; k--)
+        {
+            for (int v = k - 1; v >= 0; v--) if (arr[j][k] % arr[j][v] == 0) return false;
+        }
+    }
+    return true;
+}
+
+void Start(int n)
+{
+    int m = (int)Math.Log(n, 2) + 1;
+    int[][] sortedArray = GroupSorting(n, m);
+    if (UnitTest(sortedArray))
+    {
+        Console.WriteLine("{\r\n" + string.Join("\r\n", sortedArray.Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
+    }
+    else Console.WriteLine("Something is wrong...");
+}
+
+Start(20);
 
 // 99. На рекурсию сложная, вначале блок-схему
 // создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
