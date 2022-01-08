@@ -1057,7 +1057,6 @@
 //  так, что если одно число делится на другое, то эти числа попадают в разные руппы. 
 //  В результате этого разбиения получилось M групп, для N = 50, M = 6 
 //  Группы получились такими: 
-
 //  Группа 1: 1 
 //  Группа 2: 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 
 //  Группа 3: 4 6 9 10 14 15 21 22 25 26 33 34 35 38 39 46 49 
@@ -1068,60 +1067,73 @@
 // Задача: найти M при заданном N.
 // И получить разбиение на группы
 
-int[][] GroupSorting(int n, int m)
-{
-    if (n == 0) return Array.Empty<int[]>();
-    else
-    {
-        int[][] array = new int[m][];
-        array[0] = new int[] { 1 };
-        int a = 2;
-        int b = a * 2;
-        for (int f = 1; f < m; f++)
-        {
-            if (b < n)
-            {
-                array[f] = new int[b - a];
-                for (int i = 0; i < array[f].Length; i++) array[f][i] = a++;
-            }
-            else
-            {
-                array[f] = new int[n - b / 2 + 1];
-                for (int i = 0; i <= (n - b / 2); i++) array[f][i] = a++;
-            }
-            b *= 2;
-        }
-        return array;
-    }
-}
+// int[][] GroupSorting(int n, int m)
+// {
+//     if (n == 0) return Array.Empty<int[]>();
+//     else
+//     {
+//         int[][] array = new int[m][];
+//         array[0] = new int[] { 1 };
+//         int a = 2;
+//         int b = a * 2;
+//         for (int f = 1; f < m; f++)
+//         {
+//             if (b < n)
+//             {
+//                 array[f] = new int[b - a];
+//                 for (int i = 0; i < array[f].Length; i++) array[f][i] = a++;
+//             }
+//             else
+//             {
+//                 array[f] = new int[n - b / 2 + 1];
+//                 for (int i = 0; i <= (n - b / 2); i++) array[f][i] = a++;
+//             }
+//             b *= 2;
+//         }
+//         return array;
+//     }
+// }
 
-bool UnitTest(int[][] arr)
-{
-    for (int j = 0; j < arr.Length; j++)
-    {
-        for (int k = arr[j].Length - 1; k >= 0; k--)
-        {
-            for (int v = k - 1; v >= 0; v--) if (arr[j][k] % arr[j][v] == 0) return false;
-        }
-    }
-    return true;
-}
+// bool UnitTest(int[][] arr)
+// {
+//     for (int j = 0; j < arr.Length; j++)
+//     {
+//         for (int k = arr[j].Length - 1; k >= 0; k--)
+//         {
+//             for (int v = k - 1; v >= 0; v--) if (arr[j][k] % arr[j][v] == 0) return false;
+//         }
+//     }
+//     return true;
+// }
 
-void Start(int n)
-{
-    DateTime date = DateTime.Now;
-    TimeSpan timeSpan = DateTime.Now.Subtract(date);
-    int m = (int)Math.Log(n, 2) + 1;
-    int[][] sortedArray = GroupSorting(n, m);
-    if (UnitTest(sortedArray))
-    {
-        Console.WriteLine("{\r\n" + string.Join("\r\n", sortedArray.Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
-    }
-    else Console.WriteLine("Something is wrong...");
-    Console.WriteLine($"\nНа выполнение задачи потребовалось: {timeSpan.TotalSeconds} секунд.");
-}
+// void Start(int n)
+// {
+//     DateTime date = DateTime.Now;
+//     TimeSpan timeSpan = DateTime.Now.Subtract(date);
+//     int m = (int)Math.Log(n, 2) + 1;
+//     int[][] sortedArray = GroupSorting(n, m);
+//     if (UnitTest(sortedArray))
+//     {
+//         Console.WriteLine("{\r\n" + string.Join("\r\n", sortedArray.Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
+//     }
+//     else Console.WriteLine("Something is wrong...");
+//     Console.WriteLine($"\nНа выполнение задачи потребовалось: {timeSpan.TotalSeconds} секунд.");
+// }
 
-Start(100);
+// Start(100);
 
 // 99. На рекурсию сложная, вначале блок-схему
 // создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
+
+void PrintMove(int n, int x, int y, int z)
+{
+    if (n == 1) Console.WriteLine(x + " to " + z);
+    else
+    {
+        PrintMove(n - 1, x, z, y);
+        Console.WriteLine(x + " to " + z);
+        PrintMove(n - 1, y, x, z);
+    }
+}
+
+PrintMove(4, 1, 2, 3);
