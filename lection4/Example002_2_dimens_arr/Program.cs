@@ -1109,6 +1109,8 @@ bool UnitTest(int[][] arr)
 
 void Start(int n)
 {
+    DateTime date = DateTime.Now;
+    TimeSpan timeSpan = DateTime.Now.Subtract(date);
     int m = (int)Math.Log(n, 2) + 1;
     int[][] sortedArray = GroupSorting(n, m);
     if (UnitTest(sortedArray))
@@ -1116,9 +1118,10 @@ void Start(int n)
         Console.WriteLine("{\r\n" + string.Join("\r\n", sortedArray.Select(gr => "\t{" + string.Join(", ", gr) + "}")) + "\r\n}");
     }
     else Console.WriteLine("Something is wrong...");
+    Console.WriteLine($"\nНа выполнение задачи потребовалось: {timeSpan.TotalSeconds} секунд.");
 }
 
-Start(20);
+Start(100);
 
 // 99. На рекурсию сложная, вначале блок-схему
 // создать алгоритм для игры в ХАНОЙСКИЕ БАШНИ, который будет писать последовательность действий
