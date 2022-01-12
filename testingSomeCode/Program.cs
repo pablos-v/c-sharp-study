@@ -20,7 +20,7 @@
 
 // write Mario tower from CS50
 
-// void Mario()
+// void Mario() //1st version
 // {
 //     int n = 0;
 //     while (n <= 0)
@@ -38,3 +38,29 @@
 
 // Mario();
 
+// 2nd version
+
+string Loop(string a, int num)
+{
+    string h = string.Empty;
+    for (int i = 0; i < num; i++) h += a;
+    return h;
+}
+
+void Mario()
+{
+    int n = 0;
+    while (n <= 0)
+    {
+        Console.WriteLine("Введите высоту блоков: ");
+        if (int.TryParse(Console.ReadLine(), out int m)) n = m;
+    }
+
+    for (int f = 1; f < n + 1; f++)
+    {
+        string row = Loop(" ", n - f) + Loop("#", f) + Loop(" ", 2) + Loop("#", f) + Loop(" ", n - f);
+        Console.Write(row + "\n");
+    }
+}
+
+Mario();
