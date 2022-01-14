@@ -40,23 +40,15 @@
 
 // -------------------1.5 version with recursion-----------------------
 
-// void PrintIt(int n)
+// void Mario(int n)
 // {
+//     if (n == 0) return;
+//     Mario(n - 1);
 //     for (int i = 0; i < n; i++) Console.Write("#");
 //     Console.Write("\n");
 // }
 
-// void Mario(int c, int n)
-// {
-//     if (n == c) PrintIt(n);
-//     else
-//     {
-//         PrintIt(n);
-//         Mario(c, n + 1);
-//     }
-// }
-
-// Mario(5, 1);
+// Mario(5);
 
 // --------------2nd version Mario-----------------
 
