@@ -38,6 +38,26 @@
 
 // Mario();
 
+// -------------------1.5 version with recursion-----------------------
+
+// void PrintIt(int n)
+// {
+//     for (int i = 0; i < n; i++) Console.Write("#");
+//     Console.Write("\n");
+// }
+
+// void Mario(int c, int n)
+// {
+//     if (n == c) PrintIt(n);
+//     else
+//     {
+//         PrintIt(n);
+//         Mario(c, n + 1);
+//     }
+// }
+
+// Mario(5, 1);
+
 // --------------2nd version Mario-----------------
 
 // string Loop(string a, int num)
@@ -68,43 +88,48 @@
 
 //-------------Credit card validation (by Luhn’s Algorithm)--------
 
-long[] EnterCardNum()
-{
-    while (true)
-    {
-        Console.WriteLine("Введите номер кредитной карты: ");
-        string a = Console.ReadLine();
-        int l = a.Length;
-        if (l >= 13 && l <= 16 && long.TryParse(a, out long m))
-        {
-            long[] arr = new long[l];
-            for (int i = l - 1; i >= 0; i--)
-            {
-                arr[i] = m % 10;
-                m /= 10;
-            }
-            return arr;
-        }
-        else Console.WriteLine("Номер введён не правильно!\n");
-    }
-}
+// long[] EnterCardNum()
+// {
+//     while (true)
+//     {
+//         Console.WriteLine("Введите номер кредитной карты: ");
+//         string a = Console.ReadLine();
+//         int l = a.Length;
+//         if (l >= 13 && l <= 16 && long.TryParse(a, out long m))
+//         {
+//             long[] arr = new long[l];
+//             for (int i = l - 1; i >= 0; i--)
+//             {
+//                 arr[i] = m % 10;
+//                 m /= 10;
+//             }
+//             return arr;
+//         }
+//         else Console.WriteLine("Номер введён не правильно!\n");
+//     }
+// }
 
-bool IsValid(long[] array)
-{
-    long sum = 0;
-    for (int i = array.Length - 2; i >= 0; i -= 2)
-    {
-        long x = array[i] * 2;
-        if (x / 10 != 0) sum += (x % 10) + (x / 10);
-        else sum += x;
-    }
-    for (int i = array.Length - 1; i >= 0; i -= 2)
-    {
-        sum += array[i];
-    }
-    Console.WriteLine("Контрольная цифра " + sum);
-    return sum % 10 == 0;
-}
+// bool IsValid(long[] array)
+// {
+//     long sum = 0;
+//     for (int i = array.Length - 2; i >= 0; i -= 2)
+//     {
+//         long x = array[i] * 2;
+//         if (x / 10 != 0) sum += (x % 10) + (x / 10);
+//         else sum += x;
+//     }
+//     for (int i = array.Length - 1; i >= 0; i -= 2)
+//     {
+//         sum += array[i];
+//     }
+//     Console.WriteLine("Контрольная цифра " + sum);
+//     return sum % 10 == 0;
+// }
 
-if (IsValid(EnterCardNum())) Console.Write("Номер кредитной карты подлинный!");
-else Console.Write("Кредитной карты с таким номером НЕ СУЩЕСТВУЕТ.");
+// if (IsValid(EnterCardNum())) Console.Write("Номер кредитной карты подлинный!");
+// else Console.Write("Кредитной карты с таким номером НЕ СУЩЕСТВУЕТ.");
+
+//------------------------------------------
+
+
+
